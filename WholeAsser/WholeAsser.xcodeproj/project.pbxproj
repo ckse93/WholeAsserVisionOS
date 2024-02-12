@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFB34D8E2B7A880C00CD3FD2 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = AFB34D8D2B7A880C00CD3FD2 /* RealityKitContent */; };
+		AFB34D902B7A880C00CD3FD2 /* WholeAsserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */; };
+		AFB34D922B7A880C00CD3FD2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34D912B7A880C00CD3FD2 /* MainView.swift */; };
+		AFB34D962B7A880D00CD3FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB34D952B7A880D00CD3FD2 /* Assets.xcassets */; };
+		AFB34D992B7A880D00CD3FD2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB34D982B7A880D00CD3FD2 /* Preview Assets.xcassets */; };
+		AFB34DA42B7A880D00CD3FD2 /* WholeAsserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DA32B7A880D00CD3FD2 /* WholeAsserTests.swift */; };
+		AFB34DAE2B7A885B00CD3FD2 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DAD2B7A885B00CD3FD2 /* TaskView.swift */; };
+		AFB34DB02B7A933200CD3FD2 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DAF2B7A933200CD3FD2 /* TaskViewModel.swift */; };
+		AFB34DB22B7AA23200CD3FD2 /* MiniGoalSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AFB34DA02B7A880D00CD3FD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFB34D802B7A880C00CD3FD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFB34D872B7A880C00CD3FD2;
+			remoteInfo = WholeAsser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AFB34D882B7A880C00CD3FD2 /* WholeAsser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WholeAsser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFB34D8C2B7A880C00CD3FD2 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeAsserApp.swift; sourceTree = "<group>"; };
+		AFB34D912B7A880C00CD3FD2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AFB34D952B7A880D00CD3FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFB34D982B7A880D00CD3FD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AFB34D9A2B7A880D00CD3FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFB34D9F2B7A880D00CD3FD2 /* WholeAsserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WholeAsserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFB34DA32B7A880D00CD3FD2 /* WholeAsserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeAsserTests.swift; sourceTree = "<group>"; };
+		AFB34DAD2B7A885B00CD3FD2 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		AFB34DAF2B7A933200CD3FD2 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGoalSignView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFB34D852B7A880C00CD3FD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFB34D8E2B7A880C00CD3FD2 /* RealityKitContent in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFB34D9C2B7A880D00CD3FD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFB34D7F2B7A880C00CD3FD2 = {
+			isa = PBXGroup;
+			children = (
+				AFB34D8A2B7A880C00CD3FD2 /* WholeAsser */,
+				AFB34D8B2B7A880C00CD3FD2 /* Packages */,
+				AFB34DA22B7A880D00CD3FD2 /* WholeAsserTests */,
+				AFB34D892B7A880C00CD3FD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFB34D892B7A880C00CD3FD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFB34D882B7A880C00CD3FD2 /* WholeAsser.app */,
+				AFB34D9F2B7A880D00CD3FD2 /* WholeAsserTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFB34D8A2B7A880C00CD3FD2 /* WholeAsser */ = {
+			isa = PBXGroup;
+			children = (
+				AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */,
+				AFB34D912B7A880C00CD3FD2 /* MainView.swift */,
+				AFB34DAD2B7A885B00CD3FD2 /* TaskView.swift */,
+				AFB34DAF2B7A933200CD3FD2 /* TaskViewModel.swift */,
+				AFB34D952B7A880D00CD3FD2 /* Assets.xcassets */,
+				AFB34D9A2B7A880D00CD3FD2 /* Info.plist */,
+				AFB34D972B7A880D00CD3FD2 /* Preview Content */,
+				AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */,
+			);
+			path = WholeAsser;
+			sourceTree = "<group>";
+		};
+		AFB34D8B2B7A880C00CD3FD2 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				AFB34D8C2B7A880C00CD3FD2 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		AFB34D972B7A880D00CD3FD2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AFB34D982B7A880D00CD3FD2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AFB34DA22B7A880D00CD3FD2 /* WholeAsserTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFB34DA32B7A880D00CD3FD2 /* WholeAsserTests.swift */,
+			);
+			path = WholeAsserTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFB34D872B7A880C00CD3FD2 /* WholeAsser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFB34DA72B7A880D00CD3FD2 /* Build configuration list for PBXNativeTarget "WholeAsser" */;
+			buildPhases = (
+				AFB34D842B7A880C00CD3FD2 /* Sources */,
+				AFB34D852B7A880C00CD3FD2 /* Frameworks */,
+				AFB34D862B7A880C00CD3FD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WholeAsser;
+			packageProductDependencies = (
+				AFB34D8D2B7A880C00CD3FD2 /* RealityKitContent */,
+			);
+			productName = WholeAsser;
+			productReference = AFB34D882B7A880C00CD3FD2 /* WholeAsser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AFB34D9E2B7A880D00CD3FD2 /* WholeAsserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFB34DAA2B7A880D00CD3FD2 /* Build configuration list for PBXNativeTarget "WholeAsserTests" */;
+			buildPhases = (
+				AFB34D9B2B7A880D00CD3FD2 /* Sources */,
+				AFB34D9C2B7A880D00CD3FD2 /* Frameworks */,
+				AFB34D9D2B7A880D00CD3FD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFB34DA12B7A880D00CD3FD2 /* PBXTargetDependency */,
+			);
+			name = WholeAsserTests;
+			productName = WholeAsserTests;
+			productReference = AFB34D9F2B7A880D00CD3FD2 /* WholeAsserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFB34D802B7A880C00CD3FD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					AFB34D872B7A880C00CD3FD2 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					AFB34D9E2B7A880D00CD3FD2 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = AFB34D872B7A880C00CD3FD2;
+					};
+				};
+			};
+			buildConfigurationList = AFB34D832B7A880C00CD3FD2 /* Build configuration list for PBXProject "WholeAsser" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFB34D7F2B7A880C00CD3FD2;
+			productRefGroup = AFB34D892B7A880C00CD3FD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFB34D872B7A880C00CD3FD2 /* WholeAsser */,
+				AFB34D9E2B7A880D00CD3FD2 /* WholeAsserTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFB34D862B7A880C00CD3FD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFB34D992B7A880D00CD3FD2 /* Preview Assets.xcassets in Resources */,
+				AFB34D962B7A880D00CD3FD2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFB34D9D2B7A880D00CD3FD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFB34D842B7A880C00CD3FD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFB34D922B7A880C00CD3FD2 /* MainView.swift in Sources */,
+				AFB34DB22B7AA23200CD3FD2 /* MiniGoalSignView.swift in Sources */,
+				AFB34D902B7A880C00CD3FD2 /* WholeAsserApp.swift in Sources */,
+				AFB34DB02B7A933200CD3FD2 /* TaskViewModel.swift in Sources */,
+				AFB34DAE2B7A885B00CD3FD2 /* TaskView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFB34D9B2B7A880D00CD3FD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFB34DA42B7A880D00CD3FD2 /* WholeAsserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFB34DA12B7A880D00CD3FD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFB34D872B7A880C00CD3FD2 /* WholeAsser */;
+			targetProxy = AFB34DA02B7A880D00CD3FD2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AFB34DA52B7A880D00CD3FD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		AFB34DA62B7A880D00CD3FD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+		AFB34DA82B7A880D00CD3FD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WholeAsser/Preview Content\"";
+				DEVELOPMENT_TEAM = 7LY5WDD8ES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TinyTechTitan.WholeAsser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		AFB34DA92B7A880D00CD3FD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WholeAsser/Preview Content\"";
+				DEVELOPMENT_TEAM = 7LY5WDD8ES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TinyTechTitan.WholeAsser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
+		AFB34DAB2B7A880D00CD3FD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7LY5WDD8ES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TinyTechTitan.WholeAsserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WholeAsser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WholeAsser";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		AFB34DAC2B7A880D00CD3FD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7LY5WDD8ES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TinyTechTitan.WholeAsserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WholeAsser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WholeAsser";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFB34D832B7A880C00CD3FD2 /* Build configuration list for PBXProject "WholeAsser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB34DA52B7A880D00CD3FD2 /* Debug */,
+				AFB34DA62B7A880D00CD3FD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFB34DA72B7A880D00CD3FD2 /* Build configuration list for PBXNativeTarget "WholeAsser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB34DA82B7A880D00CD3FD2 /* Debug */,
+				AFB34DA92B7A880D00CD3FD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFB34DAA2B7A880D00CD3FD2 /* Build configuration list for PBXNativeTarget "WholeAsserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB34DAB2B7A880D00CD3FD2 /* Debug */,
+				AFB34DAC2B7A880D00CD3FD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AFB34D8D2B7A880C00CD3FD2 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AFB34D802B7A880C00CD3FD2 /* Project object */;
+}
