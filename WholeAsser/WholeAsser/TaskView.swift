@@ -108,13 +108,13 @@ struct MiniGoalButtonView: View {
                 
             }
             
-            Spacer()
-            
-            Button(action: {
-//                Op
-            }, label: {
-                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-            })
+//            Spacer()
+//            
+//            Button(action: {
+////                Op
+//            }, label: {
+//                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+//            })
         }
     }
 }
