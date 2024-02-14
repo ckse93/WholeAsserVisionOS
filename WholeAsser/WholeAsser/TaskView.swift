@@ -8,66 +8,144 @@
 import SwiftUI
 
 struct TaskView: View {
+    init(vm: TaskViewModel, isPreview: Bool = false) {
+        self._vm = State(initialValue: vm)
+        self.isPreview = isPreview
+    }
+    
+    let isPreview: Bool
+    
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
     
-    @State var vm: TaskViewModel = .init()
-    
-    @State var title: String = "1 min power cleaning"
+    @State var vm: TaskViewModel
+    @State var title: String = ""
     
     var body: some View {
         VStack {
+            Text(title)
+                .font(.largeTitle)
+                .padding()
+            
+            Gauge(
+                value: vm.timeSpent,
+                in: vm.minimum...vm.taskDurationInSec,
+                label: { Text("Label") },
+                currentValueLabel: {
+                    Text(vm.taskData.icon)
+                        .font(.system(size: 70))
+                        .padding()
+                }
+            )
+            .gaugeStyle(TaskViewGaugeStyle())
+            .padding()
+            
             HStack {
-                Text(title)
-                    .font(.title)
-                
-                switch vm.timerStatus {
-                case .notStarted:
-                    Button("Start") {
-                        vm.startTimer()
+                if !isPreview {
+                    switch vm.timerStatus {
+                    case .notStarted:
+                        Button("Start") {
+                            vm.startTimer()
+                        }
+                    case .running:
+                        EmptyView()
+                    case .done:
+                        Image(systemName: "checkmark")
+                            .foregroundStyle(
+                                Color.green
+                            )
                     }
-                case .running:
-                    EmptyView()
-                case .done:
-                    Image(systemName: "checkmark")
-                        .foregroundStyle(
-                            Color.green
-                        )
                 }
             }
+            .padding(.bottom)
             
-            Gauge(value: vm.timeSpent, in: vm.min...vm.taskDuration) {
-                Text("")
+            if !vm.taskData.miniGoals.isEmpty {
+                VStack(alignment: .leading) {
+                    Text("Mini goals")
+                        .padding(.vertical)
+                    ScrollView {
+                        ForEach(vm.taskData.miniGoals) { miniGoal in
+                            MiniGoalButtonView(miniGoal: miniGoal)
+                        }
+                    }
+                }
+                .padding()
+                .background(
+                    .regularMaterial, in: .rect(cornerRadius: 20)
+                )
             }
-            .gaugeStyle(.accessoryLinearCapacity)
-            .tint(
-                Gradient(colors: [.yellow, .green])
-            )
-//            .frame(width: 30)
-            
-            VStack(alignment: .leading) {
-                Text("Mini goals")
+
+            HStack {
+                switch vm.timerStatus {
+                case .notStarted:
+                    Button(action: {
+                        vm.showWarningAlert = true
+                    }, label: {
+                        Text("Cancel")
+                    })
+                case .running:
+                    Button(action: {
+                        vm.showWarningAlert = true
+                    }, label: {
+                        Text("Cancel")
+                    })
+                    
+                    Button(action: {
+                        vm.doneButtonAction()
+                    }, label: {
+                        Text("Done")
+                    })
+                case .done:
+                    Button(action: {
+                        self.exitAction()
+                    }, label: {
+                        Text("Exit")
+                    })
+                }
             }
-            ForEach(vm.miniGoals) { miniGoal in
-                MiniGoalButtonView(vm: miniGoal)
-            }
-            
-            Button(action: {
-                self.openWindow(id: WindowDestination.main.rawValue)
-            }, label: {
-                Text("Cancel")
-            })
-            
         }
         .padding()
-        .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: vm.timeSpent)
+        .animation(.easeIn, value: vm.timeSpent)
+        .animation(.easeIn, value: vm.timerStatus)
+        .alert("Cancel and exit?",
+               isPresented: $vm.showWarningAlert,
+               actions: {
+            Button(role: .cancel) {
+                vm.showWarningAlert = false
+            } label: {
+                Text("Nah")
+            }
+            
+            Button(role: .destructive) {
+                self.openWindow(id: WindowDestination.main.rawValue)
+            } label: {
+                Text("Yes")
+            }
+        }, message: {
+            Text("Do you want to cancel and exit?")
+        })
+        .sheet(isPresented: $vm.showRatingView, content: {
+            VStack {
+                Text("Done! How do you feel?")
+                    .font(.title)
+                    .padding()
+                
+                EmojiRatingView { rating in
+                    vm.selectedRating = rating
+                    vm.showRatingView = false
+                }
+            }
+        })
         .onAppear(perform: {
-            self.dismissWindow(id: WindowDestination.main.rawValue)
+            self.title = vm.taskData.title
+            if !isPreview {
+                self.dismissWindow(id: WindowDestination.main.rawValue)
+            }
         })
         .onChange(of: vm.timerStatus, { _, newValue in
             switch newValue {
             case .done:
-                self.title = doneMessages.randomElement()!
+                self.title = vm.taskData.taskType.completionMessageArray.randomElement()!
             default:
                 break
             }
@@ -76,10 +154,16 @@ struct TaskView: View {
             
         })
     }
+    
+    func exitAction() {
+        vm.updatePostRating()
+        print(vm.taskData.description)
+        self.openWindow(id: WindowDestination.main.rawValue)
+    }
 }
 
 struct MiniGoalButtonView: View {
-    @Bindable var vm: TaskViewModel.MiniGoalViewModel
+    @Bindable var miniGoal: MiniGoal
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
@@ -87,10 +171,10 @@ struct MiniGoalButtonView: View {
     var body: some View {
         HStack {
             Button {
-                vm.isDone = true
+                miniGoal.isDone = true
             } label: {
                 HStack {
-                    if vm.isDone {
+                    if miniGoal.isDone {
                         Image(systemName: "checkmark")
                             .foregroundStyle(
                                 Color.green
@@ -102,8 +186,8 @@ struct MiniGoalButtonView: View {
                             )
                     }
                     
-                    Text(vm.title)
-                        .strikethrough(vm.isDone, color: .green)
+                    Text(miniGoal.title)
+                        .strikethrough(miniGoal.isDone, color: .green)
                 }
                 
             }
@@ -120,19 +204,30 @@ struct MiniGoalButtonView: View {
 }
 
 #Preview {
-    TaskView()
+    TaskView(vm: .init(taskData: presetData1))
 }
 
-let doneMessages:[String] = [
-    "Done! good job! 👏",
-    "Done! you should be proud of yourself 👍",
-    "Done! nice acheivement! 🏆",
-    "Done! that was easy, wasn't it? 😎",
-    "Done! let's do it again soon ✨",
-    "Done! looks a LOT better now ✨",
-    "Nice!, Look at this, you did it! ✨",
-    "You did it! It looks amazing now! 😍",
-    "You did it!, let's make this a habit? 😜",
-    "Yeah this looks WAY better now 👏",
-    "It really wasn't that hard, but look at this! Awesome! 🥳"
-]
+struct TaskViewGaugeStyle: GaugeStyle {
+    private var gradient: Gradient = Gradient(colors: [.yellow, .green])
+    
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack {
+            // back layer
+            Circle()
+                .foregroundStyle(
+                    .regularMaterial
+                )
+//                .background(
+//                    .regularMaterial
+//                )
+            
+            Circle()
+                .trim(from: 0.0, to: 0.75 * configuration.value)
+//                .stroke(gradient, lineWidth: 20)
+                .stroke(gradient, style: StrokeStyle(lineWidth: 20, lineCap: .round))
+                .rotationEffect(.degrees(135))
+            
+            configuration.currentValueLabel
+        }
+    }
+}

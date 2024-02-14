@@ -11,13 +11,16 @@ import SwiftUI
 struct WholeAsserApp: App {
     var body: some Scene {
         WindowGroup(id: WindowDestination.main.rawValue) {
-            MainView()
+            MainTabView()
         }
+        .defaultSize(width: 1, height: 1, depth: 0.0, in: .meters)
         
-        WindowGroup(id: WindowDestination.taskView.rawValue) {
-            TaskView()
-        }
-        .defaultSize(width: 0.5, height: 0.5, depth: 0.0, in: .meters)
+        WindowGroup(id: WindowDestination.taskView.rawValue, for: TaskData.self, content: { taskDataBinding in
+            TaskView(vm: .init(taskData: taskDataBinding.wrappedValue!))
+        })
+//        .defaultSize(width: 0.5, height: 0.5, depth: 0.0, in: .meters)
+        .defaultSize(width: 400, height: 800)
+        .windowResizability(.contentSize)
     }
 }
 

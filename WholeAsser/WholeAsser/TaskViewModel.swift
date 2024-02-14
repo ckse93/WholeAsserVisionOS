@@ -16,24 +16,36 @@ enum TimerStatus {
 
 @Observable
 final class TaskViewModel {
-    var timeSpent = 0.1
+    init(taskData: TaskData) {
+        self.taskData = taskData
+        self.timeSpent = 0.1
+        self.timer = nil
+        self.timerStatus = .notStarted
+        self.elapsedTime = 0
+        self.startTime = nil
+        taskData.resetMiniGoals()
+    }
+    
+    var taskData: TaskData
+    
+    var timeSpent: Double
     private var timer: Timer?
     
-    var timerStatus: TimerStatus = .notStarted
+    var timerStatus: TimerStatus
     
-    private var elapsedTime: TimeInterval = 0
+    private var elapsedTime: TimeInterval
     private var startTime: Date?
     
-    var miniGoals: [MiniGoalViewModel] = [
-        .init(title: "Empty trashcan"),
-        .init(title: "Pick up the clutters"),
-        .init(title: "Organize desk")
-    ]
+    var showRatingView: Bool = false
+    var showWarningAlert: Bool = false
     
-    var taskDuration = 10.0
-    let min = 0.0
+    var taskDurationInSec: Double {
+        Double(taskData.totalMinutes * 60)
+    }
     
-    var miniGoalWindows: [String] = []
+    let minimum = 0.0
+    
+    var selectedRating: String?
     
     private func stopTimer() {
         if let startTime = startTime {
@@ -41,8 +53,8 @@ final class TaskViewModel {
             timer?.invalidate()
             elapsedTime += Date().timeIntervalSince(startTime)
             self.startTime = nil
-//            self.timeSpent = 0
             self.timerStatus = .done
+            self.showRatingView = true
         }
     }
     
@@ -53,22 +65,20 @@ final class TaskViewModel {
             if let startTime = self.startTime {
                 self.elapsedTime = Date().timeIntervalSince(startTime)
                 self.timeSpent = self.elapsedTime
-                if self.elapsedTime >= self.taskDuration {
+                if self.elapsedTime >= self.taskDurationInSec {
                     self.stopTimer()
                 }
             }
         }
     }
-}
-
-extension TaskViewModel {
-    @Observable
-    class MiniGoalViewModel: Identifiable {
-        init(title: String) {
-            self.title = title
+    
+    func doneButtonAction() {
+        stopTimer()
+    }
+    
+    func updatePostRating() {
+        if let rating = self.selectedRating {
+            taskData.postTaskRatings.append(rating)
         }
-        let id: UUID = .init()
-        var isDone: Bool = false
-        var title: String
     }
 }

@@ -7,9 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF919C832B7AC0EA0025F777 /* TaskGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C822B7AC0EA0025F777 /* TaskGenView.swift */; };
+		AF919C852B7ACCDE0025F777 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C842B7ACCDE0025F777 /* String + Extensions.swift */; };
+		AF919C882B7ACFDD0025F777 /* SFSymbolEnum in Frameworks */ = {isa = PBXBuildFile; productRef = AF919C872B7ACFDD0025F777 /* SFSymbolEnum */; };
+		AF919C8A2B7ACFE60025F777 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C892B7ACFE60025F777 /* Buttons.swift */; };
+		AF919C8C2B7AD0370025F777 /* Color + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */; };
+		AF919C8E2B7ADAA40025F777 /* ColortestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C8D2B7ADAA40025F777 /* ColortestView.swift */; };
+		AF919C902B7B0F800025F777 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C8F2B7B0F800025F777 /* Spacing.swift */; };
+		AF919C922B7B108E0025F777 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C912B7B108E0025F777 /* TaskData.swift */; };
+		AF919C942B7B14100025F777 /* TaskGenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C932B7B14100025F777 /* TaskGenViewModel.swift */; };
+		AF919C962B7B1C7A0025F777 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C952B7B1C7A0025F777 /* HomeView.swift */; };
+		AF919C982B7D54610025F777 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C972B7D54610025F777 /* EmojiRatingView.swift */; };
 		AFB34D8E2B7A880C00CD3FD2 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = AFB34D8D2B7A880C00CD3FD2 /* RealityKitContent */; };
 		AFB34D902B7A880C00CD3FD2 /* WholeAsserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */; };
-		AFB34D922B7A880C00CD3FD2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34D912B7A880C00CD3FD2 /* MainView.swift */; };
+		AFB34D922B7A880C00CD3FD2 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34D912B7A880C00CD3FD2 /* MainTabView.swift */; };
 		AFB34D962B7A880D00CD3FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB34D952B7A880D00CD3FD2 /* Assets.xcassets */; };
 		AFB34D992B7A880D00CD3FD2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB34D982B7A880D00CD3FD2 /* Preview Assets.xcassets */; };
 		AFB34DA42B7A880D00CD3FD2 /* WholeAsserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DA32B7A880D00CD3FD2 /* WholeAsserTests.swift */; };
@@ -29,10 +40,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF919C822B7AC0EA0025F777 /* TaskGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGenView.swift; sourceTree = "<group>"; };
+		AF919C842B7ACCDE0025F777 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		AF919C892B7ACFE60025F777 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extensions.swift"; sourceTree = "<group>"; };
+		AF919C8D2B7ADAA40025F777 /* ColortestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColortestView.swift; sourceTree = "<group>"; };
+		AF919C8F2B7B0F800025F777 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		AF919C912B7B108E0025F777 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
+		AF919C932B7B14100025F777 /* TaskGenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGenViewModel.swift; sourceTree = "<group>"; };
+		AF919C952B7B1C7A0025F777 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AF919C972B7D54610025F777 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
 		AFB34D882B7A880C00CD3FD2 /* WholeAsser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WholeAsser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB34D8C2B7A880C00CD3FD2 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeAsserApp.swift; sourceTree = "<group>"; };
-		AFB34D912B7A880C00CD3FD2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AFB34D912B7A880C00CD3FD2 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		AFB34D952B7A880D00CD3FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFB34D982B7A880D00CD3FD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AFB34D9A2B7A880D00CD3FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF919C882B7ACFDD0025F777 /* SFSymbolEnum in Frameworks */,
 				AFB34D8E2B7A880C00CD3FD2 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,13 +107,23 @@
 			isa = PBXGroup;
 			children = (
 				AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */,
-				AFB34D912B7A880C00CD3FD2 /* MainView.swift */,
+				AFB34D912B7A880C00CD3FD2 /* MainTabView.swift */,
 				AFB34DAD2B7A885B00CD3FD2 /* TaskView.swift */,
 				AFB34DAF2B7A933200CD3FD2 /* TaskViewModel.swift */,
 				AFB34D952B7A880D00CD3FD2 /* Assets.xcassets */,
 				AFB34D9A2B7A880D00CD3FD2 /* Info.plist */,
 				AFB34D972B7A880D00CD3FD2 /* Preview Content */,
 				AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */,
+				AF919C822B7AC0EA0025F777 /* TaskGenView.swift */,
+				AF919C952B7B1C7A0025F777 /* HomeView.swift */,
+				AF919C932B7B14100025F777 /* TaskGenViewModel.swift */,
+				AF919C8F2B7B0F800025F777 /* Spacing.swift */,
+				AF919C8D2B7ADAA40025F777 /* ColortestView.swift */,
+				AF919C892B7ACFE60025F777 /* Buttons.swift */,
+				AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */,
+				AF919C842B7ACCDE0025F777 /* String + Extensions.swift */,
+				AF919C912B7B108E0025F777 /* TaskData.swift */,
+				AF919C972B7D54610025F777 /* EmojiRatingView.swift */,
 			);
 			path = WholeAsser;
 			sourceTree = "<group>";
@@ -138,6 +170,7 @@
 			name = WholeAsser;
 			packageProductDependencies = (
 				AFB34D8D2B7A880C00CD3FD2 /* RealityKitContent */,
+				AF919C872B7ACFDD0025F777 /* SFSymbolEnum */,
 			);
 			productName = WholeAsser;
 			productReference = AFB34D882B7A880C00CD3FD2 /* WholeAsser.app */;
@@ -189,6 +222,10 @@
 				Base,
 			);
 			mainGroup = AFB34D7F2B7A880C00CD3FD2;
+			packageReferences = (
+				AF919C7F2B7ABECF0025F777 /* XCRemoteSwiftPackageReference "gaugekit" */,
+				AF919C862B7ACFDD0025F777 /* XCRemoteSwiftPackageReference "SFSymbolEnum" */,
+			);
 			productRefGroup = AFB34D892B7A880C00CD3FD2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -223,11 +260,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFB34D922B7A880C00CD3FD2 /* MainView.swift in Sources */,
+				AFB34D922B7A880C00CD3FD2 /* MainTabView.swift in Sources */,
+				AF919C962B7B1C7A0025F777 /* HomeView.swift in Sources */,
+				AF919C942B7B14100025F777 /* TaskGenViewModel.swift in Sources */,
+				AF919C902B7B0F800025F777 /* Spacing.swift in Sources */,
 				AFB34DB22B7AA23200CD3FD2 /* MiniGoalSignView.swift in Sources */,
 				AFB34D902B7A880C00CD3FD2 /* WholeAsserApp.swift in Sources */,
+				AF919C922B7B108E0025F777 /* TaskData.swift in Sources */,
 				AFB34DB02B7A933200CD3FD2 /* TaskViewModel.swift in Sources */,
+				AF919C8E2B7ADAA40025F777 /* ColortestView.swift in Sources */,
+				AF919C832B7AC0EA0025F777 /* TaskGenView.swift in Sources */,
+				AF919C982B7D54610025F777 /* EmojiRatingView.swift in Sources */,
 				AFB34DAE2B7A885B00CD3FD2 /* TaskView.swift in Sources */,
+				AF919C8C2B7AD0370025F777 /* Color + Extensions.swift in Sources */,
+				AF919C852B7ACCDE0025F777 /* String + Extensions.swift in Sources */,
+				AF919C8A2B7ACFE60025F777 /* Buttons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +542,31 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		AF919C7F2B7ABECF0025F777 /* XCRemoteSwiftPackageReference "gaugekit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/antonmartinsson/gaugekit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		AF919C862B7ACFDD0025F777 /* XCRemoteSwiftPackageReference "SFSymbolEnum" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jollyjinx/SFSymbolEnum";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		AF919C872B7ACFDD0025F777 /* SFSymbolEnum */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF919C862B7ACFDD0025F777 /* XCRemoteSwiftPackageReference "SFSymbolEnum" */;
+			productName = SFSymbolEnum;
+		};
 		AFB34D8D2B7A880C00CD3FD2 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
