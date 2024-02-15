@@ -164,7 +164,7 @@ extension TaskData: Equatable {
 
 @Observable
 final class MiniGoal: Identifiable, Codable {
-    let id: UUID = .init()
+    var id: UUID = .init()
     var title: String = ""
     var isDone: Bool = false
     
