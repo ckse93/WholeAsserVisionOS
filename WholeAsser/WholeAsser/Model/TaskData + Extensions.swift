@@ -7,42 +7,6 @@
 
 import Foundation
 
-final class TaskData: Identifiable {
-    var id: String
-    
-    var title: String = ""
-    var icon: String = "🗑️"
-    var isFavorite: Bool = false
-    var allCompleteCount: Int = 0
-    var completeCount: Int = 0
-    var durationMin: Int = 1
-    var durationHr: Int = 0
-    var miniGoals: [MiniGoal] = []
-    var postTaskRatings: [String] = []
-    var taskType: TaskType
-    
-    init(title: String, 
-         icon: String,
-         isFavorite: Bool = false,
-         durationMin: Int,
-         durationHr: Int,
-         miniGoals: [MiniGoal],
-         taskType: TaskType
-    ) {
-        self.id = UUID().uuidString
-        self.title = title
-        self.icon = icon
-        self.isFavorite = isFavorite
-        self.allCompleteCount = 0
-        self.completeCount = 0
-        self.durationMin = durationMin
-        self.durationHr = durationHr
-        self.miniGoals = miniGoals
-        self.postTaskRatings = []
-        self.taskType = taskType
-    }
-}
-
 enum TaskType: String, Codable, CaseIterable {
     case work = "work"
     case cleaning = "cleaning"
@@ -95,7 +59,7 @@ enum TaskType: String, Codable, CaseIterable {
     }
 }
 
-extension TaskData: Codable { }
+//extension TaskData: Codable { }
 
 extension TaskData {
     var totalMinutes: Int {
@@ -162,26 +126,3 @@ extension TaskData: Equatable {
     
 }
 
-@Observable
-final class MiniGoal: Identifiable, Codable {
-    var id: UUID = .init()
-    var title: String = ""
-    var isDone: Bool = false
-    
-    init(title: String) {
-        self.title = title
-        self.isDone = false
-    }
-}
-
-extension MiniGoal: Equatable {
-    static func == (lhs: MiniGoal, rhs: MiniGoal) -> Bool {
-        return (
-            lhs.id == rhs.id &&
-            lhs.title == rhs.title &&
-            lhs.isDone == rhs.isDone
-        )
-    }
-    
-    
-}

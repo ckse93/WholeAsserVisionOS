@@ -14,10 +14,14 @@
 		AF919C8C2B7AD0370025F777 /* Color + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */; };
 		AF919C8E2B7ADAA40025F777 /* ColortestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C8D2B7ADAA40025F777 /* ColortestView.swift */; };
 		AF919C902B7B0F800025F777 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C8F2B7B0F800025F777 /* Spacing.swift */; };
-		AF919C922B7B108E0025F777 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C912B7B108E0025F777 /* TaskData.swift */; };
+		AF919C922B7B108E0025F777 /* TaskData + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C912B7B108E0025F777 /* TaskData + Extensions.swift */; };
 		AF919C942B7B14100025F777 /* TaskGenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C932B7B14100025F777 /* TaskGenViewModel.swift */; };
 		AF919C962B7B1C7A0025F777 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C952B7B1C7A0025F777 /* HomeView.swift */; };
 		AF919C982B7D54610025F777 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C972B7D54610025F777 /* EmojiRatingView.swift */; };
+		AF919C9C2B7DCC810025F777 /* SchemaV1_0_0.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C9B2B7DCC810025F777 /* SchemaV1_0_0.swift */; };
+		AF919C9E2B7DCCAE0025F777 /* TaskDataV1_0_0.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C9D2B7DCCAD0025F777 /* TaskDataV1_0_0.swift */; };
+		AF919CA02B7DCFA40025F777 /* MiniGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C9F2B7DCFA40025F777 /* MiniGoal.swift */; };
+		AF919CA22B7DCFCF0025F777 /* MigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919CA12B7DCFCF0025F777 /* MigrationPlan.swift */; };
 		AFB34D8E2B7A880C00CD3FD2 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = AFB34D8D2B7A880C00CD3FD2 /* RealityKitContent */; };
 		AFB34D902B7A880C00CD3FD2 /* WholeAsserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */; };
 		AFB34D922B7A880C00CD3FD2 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34D912B7A880C00CD3FD2 /* MainTabView.swift */; };
@@ -40,16 +44,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF6F16652B7EC79A0027BF7B /* WholeAsser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WholeAsser.entitlements; sourceTree = "<group>"; };
 		AF919C822B7AC0EA0025F777 /* TaskGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGenView.swift; sourceTree = "<group>"; };
 		AF919C842B7ACCDE0025F777 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
 		AF919C892B7ACFE60025F777 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extensions.swift"; sourceTree = "<group>"; };
 		AF919C8D2B7ADAA40025F777 /* ColortestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColortestView.swift; sourceTree = "<group>"; };
 		AF919C8F2B7B0F800025F777 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
-		AF919C912B7B108E0025F777 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
+		AF919C912B7B108E0025F777 /* TaskData + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskData + Extensions.swift"; sourceTree = "<group>"; };
 		AF919C932B7B14100025F777 /* TaskGenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGenViewModel.swift; sourceTree = "<group>"; };
 		AF919C952B7B1C7A0025F777 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AF919C972B7D54610025F777 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
+		AF919C9B2B7DCC810025F777 /* SchemaV1_0_0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV1_0_0.swift; sourceTree = "<group>"; };
+		AF919C9D2B7DCCAD0025F777 /* TaskDataV1_0_0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataV1_0_0.swift; sourceTree = "<group>"; };
+		AF919C9F2B7DCFA40025F777 /* MiniGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGoal.swift; sourceTree = "<group>"; };
+		AF919CA12B7DCFCF0025F777 /* MigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationPlan.swift; sourceTree = "<group>"; };
 		AFB34D882B7A880C00CD3FD2 /* WholeAsser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WholeAsser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB34D8C2B7A880C00CD3FD2 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeAsserApp.swift; sourceTree = "<group>"; };
@@ -84,6 +93,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF919C992B7DCC2F0025F777 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AF919C912B7B108E0025F777 /* TaskData + Extensions.swift */,
+				AF919C9A2B7DCC390025F777 /* Version1_0_0 */,
+				AF919C9F2B7DCFA40025F777 /* MiniGoal.swift */,
+				AF919CA12B7DCFCF0025F777 /* MigrationPlan.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AF919C9A2B7DCC390025F777 /* Version1_0_0 */ = {
+			isa = PBXGroup;
+			children = (
+				AF919C9B2B7DCC810025F777 /* SchemaV1_0_0.swift */,
+				AF919C9D2B7DCCAD0025F777 /* TaskDataV1_0_0.swift */,
+			);
+			path = Version1_0_0;
+			sourceTree = "<group>";
+		};
 		AFB34D7F2B7A880C00CD3FD2 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +135,8 @@
 		AFB34D8A2B7A880C00CD3FD2 /* WholeAsser */ = {
 			isa = PBXGroup;
 			children = (
+				AF6F16652B7EC79A0027BF7B /* WholeAsser.entitlements */,
+				AF919C992B7DCC2F0025F777 /* Model */,
 				AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */,
 				AFB34D912B7A880C00CD3FD2 /* MainTabView.swift */,
 				AFB34DAD2B7A885B00CD3FD2 /* TaskView.swift */,
@@ -122,7 +153,6 @@
 				AF919C892B7ACFE60025F777 /* Buttons.swift */,
 				AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */,
 				AF919C842B7ACCDE0025F777 /* String + Extensions.swift */,
-				AF919C912B7B108E0025F777 /* TaskData.swift */,
 				AF919C972B7D54610025F777 /* EmojiRatingView.swift */,
 			);
 			path = WholeAsser;
@@ -263,13 +293,17 @@
 				AFB34D922B7A880C00CD3FD2 /* MainTabView.swift in Sources */,
 				AF919C962B7B1C7A0025F777 /* HomeView.swift in Sources */,
 				AF919C942B7B14100025F777 /* TaskGenViewModel.swift in Sources */,
+				AF919C9C2B7DCC810025F777 /* SchemaV1_0_0.swift in Sources */,
 				AF919C902B7B0F800025F777 /* Spacing.swift in Sources */,
 				AFB34DB22B7AA23200CD3FD2 /* MiniGoalSignView.swift in Sources */,
+				AF919CA22B7DCFCF0025F777 /* MigrationPlan.swift in Sources */,
 				AFB34D902B7A880C00CD3FD2 /* WholeAsserApp.swift in Sources */,
-				AF919C922B7B108E0025F777 /* TaskData.swift in Sources */,
+				AF919CA02B7DCFA40025F777 /* MiniGoal.swift in Sources */,
+				AF919C922B7B108E0025F777 /* TaskData + Extensions.swift in Sources */,
 				AFB34DB02B7A933200CD3FD2 /* TaskViewModel.swift in Sources */,
 				AF919C8E2B7ADAA40025F777 /* ColortestView.swift in Sources */,
 				AF919C832B7AC0EA0025F777 /* TaskGenView.swift in Sources */,
+				AF919C9E2B7DCCAE0025F777 /* TaskDataV1_0_0.swift in Sources */,
 				AF919C982B7D54610025F777 /* EmojiRatingView.swift in Sources */,
 				AFB34DAE2B7A885B00CD3FD2 /* TaskView.swift in Sources */,
 				AF919C8C2B7AD0370025F777 /* Color + Extensions.swift in Sources */,
@@ -421,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WholeAsser/WholeAsser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WholeAsser/Preview Content\"";
@@ -428,7 +463,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Concurrency;
+				INFOPLIST_KEY_CFBundleDisplayName = TryAwait;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,6 +484,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WholeAsser/WholeAsser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WholeAsser/Preview Content\"";
@@ -456,7 +492,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Concurrency;
+				INFOPLIST_KEY_CFBundleDisplayName = TryAwait;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

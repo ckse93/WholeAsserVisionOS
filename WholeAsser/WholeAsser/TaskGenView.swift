@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TaskGenView: View {
+    @Environment(\.modelContext) var modelContext
     @State var vm: TaskGenViewModel = .init()
     
     let cancelAction: (() -> Void)
@@ -162,9 +163,11 @@ struct TaskGenView: View {
                 .padding()
             }
         }
-        
         .padding()
         .glassBackgroundEffect()
+        .onAppear(perform: {
+            vm.modelContext = self.modelContext
+        })
         .alert("Error",
                isPresented: $vm.showErrorAlert) {
             Button("Close", role: .cancel) {
@@ -198,7 +201,8 @@ struct TaskGenView: View {
                 }
                 
                 Button("Save") {
-                    print("save")
+                    let taskData = vm.makeTaskData()
+                    modelContext.insert(taskData)
                 }
             }
             .padding()

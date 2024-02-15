@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 import SwiftUI
 
 @Observable
@@ -22,6 +23,8 @@ final class TaskGenViewModel {
     
     var showErrorAlert: Bool = false
     var showWarningAlert: Bool = false
+    
+    weak var modelContext: ModelContext?
     
     let hours: [Int] = [
         0, 1, 2
