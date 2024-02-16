@@ -19,7 +19,7 @@ extension SchemaV1_0_0 {
         var completeCount: Int = 0
         var durationMin: Int = 1
         var durationHr: Int = 0
-        var miniGoals: [MiniGoal] = []
+        var miniGoals: [String] = []
         var postTaskRatings: [String] = []
         var taskType: TaskType = TaskType.misc
         var createdDate: Date = Date()
@@ -30,7 +30,7 @@ extension SchemaV1_0_0 {
              isFavorite: Bool = false,
              durationMin: Int,
              durationHr: Int,
-             miniGoals: [MiniGoal],
+             miniGoals: [String],
              taskType: TaskType
         ) {
             self.id = UUID().uuidString
@@ -74,7 +74,7 @@ extension SchemaV1_0_0 {
             completeCount = try container.decode(Int.self, forKey: .completeCount)
             durationMin = try container.decode(Int.self, forKey: .durationMin)
             durationHr = try container.decode(Int.self, forKey: .durationHr)
-            miniGoals = try container.decode([MiniGoal].self, forKey: .miniGoals)
+            miniGoals = try container.decode([String].self, forKey: .miniGoals)
             postTaskRatings = try container.decode([String].self, forKey: .postTaskRatings)
             taskType = try container.decode(TaskType.self, forKey: .taskType)
             createdDate = try container.decode(Date.self, forKey: .createdDate)

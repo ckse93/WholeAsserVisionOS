@@ -11,6 +11,9 @@ struct TaskGenView: View {
     @Environment(\.modelContext) var modelContext
     @State var vm: TaskGenViewModel = .init()
     
+    @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissWindow) var dismissWindow
+    
     let cancelAction: (() -> Void)
     
     var body: some View {
@@ -203,6 +206,12 @@ struct TaskGenView: View {
                 Button("Save") {
                     let taskData = vm.makeTaskData()
                     modelContext.insert(taskData)
+                    self.cancelAction()
+                }
+                
+                Button("Try it out") {
+                    self.openWindow(id: WindowDestination.taskTryItOutView.rawValue,
+                                    value: vm.makeTaskData())
                 }
             }
             .padding()

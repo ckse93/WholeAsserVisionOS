@@ -17,12 +17,18 @@ struct WholeAsserApp: App {
             TaskData.self,
         ])
         
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let config = ModelConfiguration(schema: schema,
+                                        isStoredInMemoryOnly: false,
+                                        allowsSave: true,
+                                        cloudKitDatabase: .private("WholeAsser.container-02"))
+        print("lalalala \(config.cloudKitContainerIdentifier)")
+        print("lalalala \(config.cloudKitDatabase)")
+//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
             sharedModelContainer = try ModelContainer(for: schema,
                                                       migrationPlan: DataMigrationPlan.self,
-                                                      configurations: [modelConfiguration])
+                                                      configurations: [config])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
@@ -42,6 +48,14 @@ struct WholeAsserApp: App {
         })
         .defaultSize(width: 400, height: 800)
         .windowResizability(.contentSize)
+        .modelContainer(sharedModelContainer)
+        
+        WindowGroup(id: WindowDestination.taskTryItOutView.rawValue, for: TaskData.self, content: { taskDataBinding in
+            TaskView(vm: .init(taskData: taskDataBinding.wrappedValue!), isTryItOut: true)
+        })
+        .defaultSize(width: 400, height: 800)
+        .windowResizability(.contentSize)
+        .modelContainer(sharedModelContainer)
     }
 }
 
@@ -51,5 +65,6 @@ enum WindowDestination: String, Identifiable {
     }
     case main = "mainView"
     case taskView = "taskView"
+    case taskTryItOutView = "taskTryItOut"
     case MiniGoalSignView = "MiniGoalSignView"
 }

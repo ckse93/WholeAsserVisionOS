@@ -28,7 +28,7 @@ enum TabItem: CaseIterable, Identifiable {
         case .main:
             return .house
         case .taskGen:
-            return .pencilAndOutline
+            return .squareAndPencil
         }
     }
     
@@ -52,16 +52,10 @@ struct MainTabView: View {
             ForEach(TabItem.allCases) { tabItem in
                 switch tabItem {
                 case .main:
-//                    VStack {
-//                        Button("Start 1 min power cleaning") {
-//                            self.openWindow(id: WindowDestination.taskView.rawValue)
-//                            self.dismissWindow(id: WindowDestination.main.rawValue)
-//                        }
-//                    }
-//                    .padding()
                     HomeView()
                     .onAppear(perform: {
                         self.dismissWindow(id: WindowDestination.taskView.rawValue)
+                        self.dismissWindow(id: WindowDestination.taskTryItOutView.rawValue)
                     })
                     .tabItem {
                         Label(tabItem.name, systemImage: tabItem.image.rawValue)

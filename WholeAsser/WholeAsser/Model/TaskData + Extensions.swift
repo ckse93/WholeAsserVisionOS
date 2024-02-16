@@ -80,7 +80,7 @@ extension TaskData {
         desc.append("taskType: \(self.taskType.rawValue) \n")
         desc.append("MiniGoals: \n")
         for miniGoal in self.miniGoals {
-            desc.append("      \(miniGoal.title), isDone: \(miniGoal.isDone)\n")
+            desc.append("      \(miniGoal)\n")
         }
         desc.append("\n")
         desc.append("postRaing: \n")
@@ -88,12 +88,6 @@ extension TaskData {
             desc.append("      \(rating)")
         }
         return desc
-    }
-    
-    func resetMiniGoals() {
-        for miniGoal in self.miniGoals {
-            miniGoal.isDone = false
-        }
     }
 }
 

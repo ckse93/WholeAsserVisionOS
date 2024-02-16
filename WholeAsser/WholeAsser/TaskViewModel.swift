@@ -23,7 +23,6 @@ final class TaskViewModel {
         self.timerStatus = .notStarted
         self.elapsedTime = 0
         self.startTime = nil
-        taskData.resetMiniGoals()
     }
     
     var taskData: TaskData

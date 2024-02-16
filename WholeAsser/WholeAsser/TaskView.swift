@@ -8,15 +8,32 @@
 import SwiftUI
 
 struct TaskView: View {
+    init(vm: TaskViewModel) {
+        self._vm = State(initialValue: vm)
+        self.isPreview = false
+        self.isTryItOut = false
+    }
+    
     init(vm: TaskViewModel, isPreview: Bool = false) {
         self._vm = State(initialValue: vm)
         self.isPreview = isPreview
+        self.isTryItOut = false
+    }
+    
+    init(vm: TaskViewModel, isTryItOut: Bool = false) {
+        self._vm = State(initialValue: vm)
+        self.isPreview = false
+        self.isTryItOut = isTryItOut
     }
     
     let isPreview: Bool
     
+    let isTryItOut: Bool
+    
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
+    
+    @Environment(\.modelContext) var modelContext
     
     @State var vm: TaskViewModel
     @State var title: String = ""
@@ -64,7 +81,7 @@ struct TaskView: View {
                     Text("Mini goals")
                         .padding(.vertical)
                     ScrollView {
-                        ForEach(vm.taskData.miniGoals) { miniGoal in
+                        ForEach(vm.taskData.miniGoals, id: \.self) { miniGoal in
                             MiniGoalButtonView(miniGoal: miniGoal)
                         }
                     }
@@ -101,6 +118,17 @@ struct TaskView: View {
                     }, label: {
                         Text("Exit")
                     })
+                    
+                    if isTryItOut {
+                        Button(action: {
+                            let taskData = vm.taskData
+                            modelContext.insert(taskData)
+                            self.exitAction()
+                        }, label: {
+                            Text("Save task and Exit")
+                        })
+                    }
+                    
                 }
             }
         }
@@ -163,7 +191,8 @@ struct TaskView: View {
 }
 
 struct MiniGoalButtonView: View {
-    @Bindable var miniGoal: MiniGoal
+    let miniGoal: String
+    @State private var isDone: Bool = false
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
@@ -171,10 +200,10 @@ struct MiniGoalButtonView: View {
     var body: some View {
         HStack {
             Button {
-                miniGoal.isDone = true
+                isDone = true
             } label: {
                 HStack {
-                    if miniGoal.isDone {
+                    if isDone {
                         Image(systemName: "checkmark")
                             .foregroundStyle(
                                 Color.green
@@ -186,19 +215,11 @@ struct MiniGoalButtonView: View {
                             )
                     }
                     
-                    Text(miniGoal.title)
-                        .strikethrough(miniGoal.isDone, color: .green)
+                    Text(miniGoal)
+                        .strikethrough(isDone, color: .green)
                 }
                 
             }
-            
-//            Spacer()
-//            
-//            Button(action: {
-////                Op
-//            }, label: {
-//                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-//            })
         }
     }
 }
@@ -217,13 +238,9 @@ struct TaskViewGaugeStyle: GaugeStyle {
                 .foregroundStyle(
                     .regularMaterial
                 )
-//                .background(
-//                    .regularMaterial
-//                )
             
             Circle()
                 .trim(from: 0.0, to: 0.75 * configuration.value)
-//                .stroke(gradient, lineWidth: 20)
                 .stroke(gradient, style: StrokeStyle(lineWidth: 20, lineCap: .round))
                 .rotationEffect(.degrees(135))
             
