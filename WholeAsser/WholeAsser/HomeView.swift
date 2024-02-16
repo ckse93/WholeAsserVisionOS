@@ -186,15 +186,15 @@ struct SavedTaskView: View {
                     }
                 })
                 
-                Button {
-                    do {
-                        try modelContext.delete(model: TaskData.self)
-                    } catch {
-                        
-                    }
-                } label: {
-                    Text("PURGE")
-                }
+//                Button {
+//                    do {
+//                        try modelContext.delete(model: TaskData.self)
+//                    } catch {
+//                        
+//                    }
+//                } label: {
+//                    Text("PURGE")
+//                }
 
             }
         }

@@ -17,18 +17,22 @@ struct WholeAsserApp: App {
             TaskData.self,
         ])
         
-        let config = ModelConfiguration(schema: schema,
+        var config: ModelConfiguration?
+        
+        #if targetEnvironment(simulator)
+        config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        #else
+        config = ModelConfiguration(schema: schema,
                                         isStoredInMemoryOnly: false,
                                         allowsSave: true,
                                         cloudKitDatabase: .private("WholeAsser.container-02"))
-        print("lalalala \(config.cloudKitContainerIdentifier)")
-        print("lalalala \(config.cloudKitDatabase)")
-//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        #endif
 
         do {
             sharedModelContainer = try ModelContainer(for: schema,
                                                       migrationPlan: DataMigrationPlan.self,
-                                                      configurations: [config])
+                                                      configurations: [config!])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
