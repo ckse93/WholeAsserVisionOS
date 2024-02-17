@@ -19,15 +19,15 @@ struct WholeAsserApp: App {
         
         var config: ModelConfiguration?
         
-        #if targetEnvironment(simulator)
-        config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
-        #else
+//        #if targetEnvironment(simulator)
+//        config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true, cloudKitDatabase: .none)
+//        
+//        #else
         config = ModelConfiguration(schema: schema,
                                         isStoredInMemoryOnly: false,
                                         allowsSave: true,
                                         cloudKitDatabase: .private("WholeAsser.container-02"))
-        #endif
+//        #endif
 
         do {
             sharedModelContainer = try ModelContainer(for: schema,

@@ -120,10 +120,13 @@ struct HomeView: View {
                     })
                 }
             }
+            .border(Color.black)
+            
             Divider()
                 .padding(.horizontal)
             
             SavedTaskView()
+            border(Color.black)
         }
         .padding()
         .sheet(item: $previewTask, content: { previewTaskData in
