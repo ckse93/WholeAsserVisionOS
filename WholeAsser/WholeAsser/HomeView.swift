@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 let presetData1: TaskData = .init(title: "3 minute power cleaning",
                                   icon: "🧹",
                                   durationMin: 3,
                                   durationHr: 0,
                                   miniGoals: [
-                                        .init(title: "organize desk"),
-                                        .init(title: "empty trash can")
+                                        "organize desk",
+                                        "empty trash can",
                                     ],
                                   taskType: .cleaning)
 
@@ -29,8 +30,8 @@ let presetData3: TaskData = .init(title: "10 minute misc work task",
                                   durationMin: 10,
                                   durationHr: 0,
                                   miniGoals: [
-                                        .init(title: "do timesheet"),
-                                        .init(title: "respond to emials"),
+                                        "do timesheet",
+                                        "respond to emials",
                                   ],
                                   taskType: .work)
     
@@ -39,9 +40,9 @@ let presetData4: TaskData = .init(title: "15 min pull request",
                                   durationMin: 15,
                                   durationHr: 0,
                                   miniGoals: [
-                                    .init(title: "check for commted out code"),
-                                        .init(title: "double check documentation"),
-                                        .init(title: "remove swear words"),
+                                    "check for commted out code",
+                                        "double check documentation",
+                                        "remove swear words",
                                     ],
                                   taskType: .work)
 
@@ -50,9 +51,9 @@ let presetData5: TaskData = .init(title: "Make reservation",
                                   durationMin: 5,
                                   durationHr: 0,
                                   miniGoals: [
-                                    .init(title: "final check who's coming"),
-                                        .init(title: "book a room"),
-                                        .init(title: "keep it polite this time"),
+                                    "final check who's coming",
+                                        "book a room",
+                                        "keep it polite this time",
                                     ],
                                   taskType: .chores)
 
@@ -61,7 +62,7 @@ let presetData6: TaskData = .init(title: "Relax for a bit",
                                   durationMin: 2,
                                   durationHr: 0,
                                   miniGoals: [
-                                    .init(title: "deep breath, feel air coming in and out")
+                                    "deep breath, feel air coming in and out",
                                     ],
                                   taskType: .misc)
 
@@ -119,7 +120,13 @@ struct HomeView: View {
                     })
                 }
             }
+            .border(Color.red)
+            
             Divider()
+                .padding(.horizontal)
+            
+            SavedTaskView()
+                .border(Color.red)
         }
         .padding()
         .sheet(item: $previewTask, content: { previewTaskData in
