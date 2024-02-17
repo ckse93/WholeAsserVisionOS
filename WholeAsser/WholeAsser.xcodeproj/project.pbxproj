@@ -31,6 +31,7 @@
 		AFB34DAE2B7A885B00CD3FD2 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DAD2B7A885B00CD3FD2 /* TaskView.swift */; };
 		AFB34DB02B7A933200CD3FD2 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DAF2B7A933200CD3FD2 /* TaskViewModel.swift */; };
 		AFB34DB22B7AA23200CD3FD2 /* MiniGoalSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */; };
+		AFB592E02B806EEA0010E90B /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB592DF2B806EEA0010E90B /* ButtonStyles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		AFB34DAD2B7A885B00CD3FD2 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		AFB34DAF2B7A933200CD3FD2 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGoalSignView.swift; sourceTree = "<group>"; };
+		AFB592DF2B806EEA0010E90B /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */,
 				AF919C822B7AC0EA0025F777 /* TaskGenView.swift */,
 				AF919C952B7B1C7A0025F777 /* HomeView.swift */,
+				AFB592DF2B806EEA0010E90B /* ButtonStyles.swift */,
 				AF919C932B7B14100025F777 /* TaskGenViewModel.swift */,
 				AF919C8F2B7B0F800025F777 /* Spacing.swift */,
 				AF919C8D2B7ADAA40025F777 /* ColortestView.swift */,
@@ -301,6 +304,7 @@
 				AF919C8E2B7ADAA40025F777 /* ColortestView.swift in Sources */,
 				AF919C832B7AC0EA0025F777 /* TaskGenView.swift in Sources */,
 				AF919C982B7D54610025F777 /* EmojiRatingView.swift in Sources */,
+				AFB592E02B806EEA0010E90B /* ButtonStyles.swift in Sources */,
 				AFB34DAE2B7A885B00CD3FD2 /* TaskView.swift in Sources */,
 				AF919C8C2B7AD0370025F777 /* Color + Extensions.swift in Sources */,
 				AF919C852B7ACCDE0025F777 /* String + Extensions.swift in Sources */,
