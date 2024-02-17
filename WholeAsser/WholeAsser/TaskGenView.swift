@@ -163,7 +163,6 @@ struct TaskGenView: View {
                 .padding()
             }
         }
-        
         .padding()
         .glassBackgroundEffect()
         .alert("Error",
@@ -202,9 +201,14 @@ struct TaskGenView: View {
                 .buttonStyle(CancelButtonStyle())
                 
                 Button("Save") {
-                    let taskData = vm.makeTaskData()
-                    modelContext.insert(taskData)
-                    self.cancelAction()
+                    if vm.title.isEmpty {
+                        vm.errorString = "Cannot add empty title"
+                        vm.showErrorAlert = true
+                    } else {
+                        let taskData = vm.makeTaskData()
+                        modelContext.insert(taskData)
+                        self.cancelAction()
+                    }
                 }
                 .buttonStyle(SaveButtonStyle())
                 
