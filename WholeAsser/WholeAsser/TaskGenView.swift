@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct TaskGenView: View {
+    @Environment(\.modelContext) var modelContext
     @State var vm: TaskGenViewModel = .init()
+    
+    @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissWindow) var dismissWindow
     
     let cancelAction: (() -> Void)
     
@@ -117,10 +121,7 @@ struct TaskGenView: View {
                         }, label: {
                             Image(systemName: "plus")
                         })
-                        .background(
-                            Color.green
-                        )
-                        .clipShape(Circle())
+                        .buttonStyle(CircleBtnStyle(color: .systemGreen))
                         
                         TextField("task title", text: $vm.miniGoalString, prompt: Text("mini goal"))
                             .padding()
@@ -162,7 +163,6 @@ struct TaskGenView: View {
                 .padding()
             }
         }
-        
         .padding()
         .glassBackgroundEffect()
         .alert("Error",
@@ -192,14 +192,33 @@ struct TaskGenView: View {
         })
         .animation(.easeIn, value: vm.miniGoalString)
         .ornament(attachmentAnchor: .scene(.bottom)) {
-            HStack {
-                Button("Cancel") {
+            HStack(spacing: Spacing.x4) {
+                Button(action: {
                     vm.showWarningAlert = true
-                }
+                }, label: {
+                    Text("Cancel")
+                })
+                .buttonStyle(CancelButtonStyle())
                 
                 Button("Save") {
-                    print("save")
+                    if vm.title.isEmpty {
+                        vm.errorString = "Cannot add empty title"
+                        vm.showErrorAlert = true
+                    } else {
+                        let taskData = vm.makeTaskData()
+                        modelContext.insert(taskData)
+                        self.cancelAction()
+                    }
                 }
+                .buttonStyle(SaveButtonStyle())
+                
+                Button {
+                    self.openWindow(id: WindowDestination.taskTryItOutView.rawValue,
+                                    value: vm.makeTaskData())
+                } label: {
+                    Text("Try it out")
+                }
+                .buttonStyle(DefaultBtnStyle())
             }
             .padding()
             .glassBackgroundEffect()

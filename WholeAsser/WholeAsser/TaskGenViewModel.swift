@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 @Observable
 final class TaskGenViewModel {
@@ -22,6 +23,8 @@ final class TaskGenViewModel {
     
     var showErrorAlert: Bool = false
     var showWarningAlert: Bool = false
+    
+    weak var modelContext: ModelContext?
     
     let hours: [Int] = [
         0, 1, 2
@@ -104,17 +107,9 @@ final class TaskGenViewModel {
                                 icon: self.icon,
                                 durationMin: self.durationMin,
                                 durationHr: self.durationHr,
-                                miniGoals: generateMiniGoals(),
+                                miniGoals: self.miniGoals,
                                 taskType: self.taskType)
         
         return taskData
-        
-        func generateMiniGoals() -> [MiniGoal] {
-            var miniGoalArray: [MiniGoal] = []
-            for miniGoal in self.miniGoals {
-                miniGoalArray.append(.init(title: miniGoal))
-            }
-            return miniGoalArray
-        }
     }
 }

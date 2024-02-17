@@ -1,47 +1,11 @@
 //
-//  Task.swift
+//  TaskData + Extensions.swift
 //  WholeAsser
 //
-//  Created by Chan Jung on 2/12/24.
+//  Created by Chan Jung on 2/16/24.
 //
 
 import Foundation
-
-final class TaskData: Identifiable {
-    var id: String
-    
-    var title: String = ""
-    var icon: String = "🗑️"
-    var isFavorite: Bool = false
-    var allCompleteCount: Int = 0
-    var completeCount: Int = 0
-    var durationMin: Int = 1
-    var durationHr: Int = 0
-    var miniGoals: [MiniGoal] = []
-    var postTaskRatings: [String] = []
-    var taskType: TaskType
-    
-    init(title: String, 
-         icon: String,
-         isFavorite: Bool = false,
-         durationMin: Int,
-         durationHr: Int,
-         miniGoals: [MiniGoal],
-         taskType: TaskType
-    ) {
-        self.id = UUID().uuidString
-        self.title = title
-        self.icon = icon
-        self.isFavorite = isFavorite
-        self.allCompleteCount = 0
-        self.completeCount = 0
-        self.durationMin = durationMin
-        self.durationHr = durationHr
-        self.miniGoals = miniGoals
-        self.postTaskRatings = []
-        self.taskType = taskType
-    }
-}
 
 enum TaskType: String, Codable, CaseIterable {
     case work = "work"
@@ -95,7 +59,6 @@ enum TaskType: String, Codable, CaseIterable {
     }
 }
 
-extension TaskData: Codable { }
 
 extension TaskData {
     var totalMinutes: Int {
@@ -116,7 +79,7 @@ extension TaskData {
         desc.append("taskType: \(self.taskType.rawValue) \n")
         desc.append("MiniGoals: \n")
         for miniGoal in self.miniGoals {
-            desc.append("      \(miniGoal.title), isDone: \(miniGoal.isDone)\n")
+            desc.append("      \(miniGoal)")
         }
         desc.append("\n")
         desc.append("postRaing: \n")
@@ -124,12 +87,6 @@ extension TaskData {
             desc.append("      \(rating)")
         }
         return desc
-    }
-    
-    func resetMiniGoals() {
-        for miniGoal in self.miniGoals {
-            miniGoal.isDone = false
-        }
     }
 }
 
@@ -158,30 +115,4 @@ extension TaskData: Equatable {
             lhs.postTaskRatings == rhs.postTaskRatings
         )
     }
-    
-    
-}
-
-@Observable
-final class MiniGoal: Identifiable, Codable {
-    let id: UUID = .init()
-    var title: String = ""
-    var isDone: Bool = false
-    
-    init(title: String) {
-        self.title = title
-        self.isDone = false
-    }
-}
-
-extension MiniGoal: Equatable {
-    static func == (lhs: MiniGoal, rhs: MiniGoal) -> Bool {
-        return (
-            lhs.id == rhs.id &&
-            lhs.title == rhs.title &&
-            lhs.isDone == rhs.isDone
-        )
-    }
-    
-    
 }

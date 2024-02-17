@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
+
+let cardCornerRadius: CGFloat = 25
 
 let presetData1: TaskData = .init(title: "3 minute power cleaning",
                                   icon: "🧹",
                                   durationMin: 3,
                                   durationHr: 0,
                                   miniGoals: [
-                                        .init(title: "organize desk"),
-                                        .init(title: "empty trash can")
+                                        "organize desk",
+                                        "empty trash can",
                                     ],
                                   taskType: .cleaning)
 
@@ -29,8 +32,8 @@ let presetData3: TaskData = .init(title: "10 minute misc work task",
                                   durationMin: 10,
                                   durationHr: 0,
                                   miniGoals: [
-                                        .init(title: "do timesheet"),
-                                        .init(title: "respond to emials"),
+                                        "do timesheet",
+                                        "respond to emials",
                                   ],
                                   taskType: .work)
     
@@ -39,9 +42,9 @@ let presetData4: TaskData = .init(title: "15 min pull request",
                                   durationMin: 15,
                                   durationHr: 0,
                                   miniGoals: [
-                                    .init(title: "check for commted out code"),
-                                        .init(title: "double check documentation"),
-                                        .init(title: "remove swear words"),
+                                    "check for commted out code",
+                                        "double check documentation",
+                                        "remove swear words",
                                     ],
                                   taskType: .work)
 
@@ -50,9 +53,9 @@ let presetData5: TaskData = .init(title: "Make reservation",
                                   durationMin: 5,
                                   durationHr: 0,
                                   miniGoals: [
-                                    .init(title: "final check who's coming"),
-                                        .init(title: "book a room"),
-                                        .init(title: "keep it polite this time"),
+                                    "final check who's coming",
+                                        "book a room",
+                                        "keep it polite this time",
                                     ],
                                   taskType: .chores)
 
@@ -61,7 +64,7 @@ let presetData6: TaskData = .init(title: "Relax for a bit",
                                   durationMin: 2,
                                   durationHr: 0,
                                   miniGoals: [
-                                    .init(title: "deep breath, feel air coming in and out")
+                                    "deep breath, feel air coming in and out",
                                     ],
                                   taskType: .misc)
 
@@ -70,7 +73,7 @@ struct HomeView: View {
     private var quickItemGrid: [GridItem] = [
         GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
         GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
-        GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top)
+        GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
     ]
     
     
@@ -98,28 +101,28 @@ struct HomeView: View {
                 ScrollView {
                     LazyVGrid(columns: quickItemGrid,
                               alignment: .center,
-                              spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/,
-                              pinnedViews: /*@START_MENU_TOKEN@*/[]/*@END_MENU_TOKEN@*/,
+                              spacing: nil,
+                              pinnedViews: [],
                               content: {
-                        ForEach(sampleItems) { sampleData in
-                            Button(action: {
-                                
-                            }, label: {
+                            ForEach(sampleItems) { sampleData in
                                 TaskCardView(taskData: sampleData)
-                            })
-                            .buttonStyle(.plain)
-                            .simultaneousGesture(LongPressGesture(minimumDuration: 1.0).onEnded { _ in
-                                self.previewTask = sampleData
-                            })
-                            .simultaneousGesture(TapGesture().onEnded {
-                                self.openWindow(id: WindowDestination.taskView.rawValue,
-                                                value: sampleData)
-                            })
-                        }
+                                    .simultaneousGesture(LongPressGesture(minimumDuration: 1.0).onEnded { _ in
+                                        self.previewTask = sampleData
+                                    })
+                                    .simultaneousGesture(TapGesture().onEnded {
+                                        self.openWindow(id: WindowDestination.taskView.rawValue,
+                                                        value: sampleData)
+                                    })
+                            }
+                        
                     })
                 }
             }
+            
             Divider()
+                .padding(.horizontal)
+            
+            SavedTaskView()
         }
         .padding()
         .sheet(item: $previewTask, content: { previewTaskData in
@@ -128,7 +131,7 @@ struct HomeView: View {
                     Button(action: {
                         self.previewTask = nil
                     }, label: {
-                        Text("Button")
+                        Text("Dismiss")
                     })
                 }
                 .padding()
@@ -140,41 +143,61 @@ struct HomeView: View {
     }
 }
 
+struct CardButtonStyle: PrimitiveButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        // reuse the original button action
+        Button(action: configuration.trigger, label: {
+            configuration.label
+                .padding()
+                .background(.regularMaterial, in: .rect(cornerRadius: 12))
+                .hoverEffect()
+        })
+        // This allows our button to retain
+        // default system behavior like e.g.
+        // the disabled gray out mask
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
 struct TaskCardView: View {
     let taskData: TaskData
     
     var body: some View {
-        VStack {
+        Button {
             
-            ZStack(alignment: .bottomTrailing, content: {
-                Text(taskData.icon)
-                    .font(.system(size: 60))
-                    .padding()
-                .overlay {
-                    RoundedRectangle(cornerRadius: 12.0)
-                        .stroke(Color.white, lineWidth: 2.0)
-                }
+        } label: {
+            VStack {
+                ZStack(alignment: .bottomTrailing, content: {
+                    Text(taskData.icon)
+                        .font(.system(size: 60))
+                        .padding()
+                    
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 12.0)
+                            .stroke(Color.white, lineWidth: 2.0)
+                    }
+                    
+                    Text("\(taskData.totalMinutes) min")
+                        .font(.caption)
+                        .padding(Spacing.x2)
+                        .foregroundStyle(
+                            .tertiary
+                        )
+                })
                 
-                Text("\(taskData.totalMinutes) min")
-                    .font(.caption)
-                    .padding(Spacing.x2)
+                Text(taskData.title)
                     .foregroundStyle(
-                        .tertiary
+                        .secondary
                     )
-            })
-            
-            
-            Text(taskData.title)
-                .foregroundStyle(
-                    .secondary
-                )
+            }
+            .padding()
+            .background(
+                .regularMaterial,
+                in: .rect(cornerRadius: cardCornerRadius)
+            )
         }
-        .padding()
-        .background(
-            .regularMaterial,
-            in: .rect(cornerRadius: 25)
-        )
-        .contentShape(.hoverEffect, .rect(cornerRadius: 15))
+        .buttonStyle(.plain)
+//        .buttonStyle(CardButtonStyle())
     }
 }
 
