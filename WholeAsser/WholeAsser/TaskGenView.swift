@@ -24,6 +24,9 @@ struct TaskGenView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding()
+                        .padding(.top)
+                    
+                    Spacer()
                     
                     ZStack(alignment: .bottomTrailing, content: {
                         Text(vm.icon)
@@ -48,6 +51,8 @@ struct TaskGenView: View {
                         .offset(x: 30)
                     })
                     .padding()
+                    
+                    Spacer()
                     
                     HStack {
                         TextField("task title", text: $vm.title, prompt: Text("task title"))
@@ -104,6 +109,8 @@ struct TaskGenView: View {
                         .padding()
                     }
                     
+                    Spacer()
+                    
                 }
                 
                 Divider()
@@ -159,6 +166,8 @@ struct TaskGenView: View {
                         })
                     }
                     .frame(idealHeight: 250)
+                    
+                    Spacer()
                 }
                 .padding()
             }
@@ -213,8 +222,13 @@ struct TaskGenView: View {
                 .buttonStyle(SaveButtonStyle())
                 
                 Button {
-                    self.openWindow(id: WindowDestination.taskTryItOutView.rawValue,
-                                    value: vm.makeTaskData())
+                    if vm.title.isEmpty {
+                        vm.errorString = "Cannot add empty title"
+                        vm.showErrorAlert = true
+                    } else {
+                        self.openWindow(id: WindowDestination.taskTryItOutView.rawValue,
+                                        value: vm.makeTaskData())
+                    }
                 } label: {
                     Text("Try it out")
                 }

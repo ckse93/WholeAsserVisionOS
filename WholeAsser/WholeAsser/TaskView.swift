@@ -5,7 +5,10 @@
 //  Created by Chan Jung on 2/12/24.
 //
 
+import Combine
 import SwiftUI
+
+let timerIntervalSecond: Double = 1.0
 
 struct TaskView: View {
     init(vm: TaskViewModel) {
@@ -37,6 +40,26 @@ struct TaskView: View {
     @State var vm: TaskViewModel
     @State var title: String = ""
     
+    @State var timeSpent: Double = 0.1
+    @State var timer = Timer.publish(every: timerIntervalSecond,
+                                     on: .main,
+                                     in: .common).autoconnect()
+    
+    private func stopTimer() {
+        timer.upstream.connect().cancel()
+        vm.timerStatus = .done
+        vm.showRatingView = true
+    }
+    
+    func startTimer() {
+        vm.timerStatus = .running
+        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    }
+    
+    func doneButtonAction() {
+        stopTimer()
+    }
+    
     var body: some View {
         VStack {
             Text(title)
@@ -44,7 +67,7 @@ struct TaskView: View {
                 .padding()
             
             Gauge(
-                value: vm.timeSpent,
+                value: timeSpent,
                 in: vm.minimum...vm.taskDurationInSec,
                 label: { Text("Label") },
                 currentValueLabel: {
@@ -61,7 +84,7 @@ struct TaskView: View {
                     switch vm.timerStatus {
                     case .notStarted:
                         Button("Start") {
-                            vm.startTimer()
+                            self.startTimer()
                         }
                     case .running:
                         EmptyView()
@@ -91,48 +114,67 @@ struct TaskView: View {
                     .regularMaterial, in: .rect(cornerRadius: 20)
                 )
             }
-
-            HStack {
-                switch vm.timerStatus {
-                case .notStarted:
-                    Button(action: {
-                        vm.showWarningAlert = true
-                    }, label: {
-                        Text("Cancel")
-                    })
-                case .running:
-                    Button(action: {
-                        vm.showWarningAlert = true
-                    }, label: {
-                        Text("Cancel")
-                    })
-                    
-                    Button(action: {
-                        vm.doneButtonAction()
-                    }, label: {
-                        Text("Done")
-                    })
-                case .done:
-                    Button(action: {
-                        self.exitAction()
-                    }, label: {
-                        Text("Exit")
-                    })
-                    
-                    if isTryItOut {
+            
+            Spacer()
+        }
+        .ornament(attachmentAnchor: .scene(.bottom), ornament: {
+            HStack(spacing: Spacing.x4) {
+                Group {
+                    switch vm.timerStatus {
+                    case .notStarted:
                         Button(action: {
-                            let taskData = vm.taskData
-                            modelContext.insert(taskData)
+                            vm.showWarningAlert = true
+                        }, label: {
+                            Text("Cancel")
+                        })
+                        .buttonStyle(CancelButtonStyle())
+                    case .running:
+                        Button(action: {
+                            vm.showWarningAlert = true
+                        }, label: {
+                            Text("Cancel")
+                        })
+                        .buttonStyle(CancelButtonStyle())
+                        
+                        Button(action: {
+                            self.doneButtonAction()
+                        }, label: {
+                            Text("Done")
+                        })
+                        .buttonStyle(SaveButtonStyle())
+                    case .done:
+                        Button(action: {
                             self.exitAction()
                         }, label: {
-                            Text("Save task and Exit")
+                            Text("Exit")
                         })
+                        
+                        if isTryItOut {
+                            Button(action: {
+                                let taskData = vm.taskData
+                                modelContext.insert(taskData)
+                                self.exitAction()
+                            }, label: {
+                                Text("Save task and Exit")
+                            })
+                        }
                     }
                 }
             }
-        }
+            .padding()
+            .glassBackgroundEffect()
+        })
+        .onReceive(timer, perform: { _ in
+            // this will call every "timerIntervalSecond" second has elapsed
+            timeSpent += timerIntervalSecond
+        })
+        .onChange(of: timeSpent, { _, newValue in
+            if newValue >= vm.taskDurationInSec {
+                self.stopTimer()
+            }
+        })
         .padding()
-        .animation(.easeIn, value: vm.timeSpent)
+        .animation(.easeIn, value: self.timeSpent)
         .animation(.easeIn, value: vm.timerStatus)
         .alert("Cancel and exit?",
                isPresented: $vm.showWarningAlert,
@@ -164,6 +206,7 @@ struct TaskView: View {
             }
         })
         .onAppear(perform: {
+            self.timer.upstream.connect().cancel()
             self.title = vm.taskData.title
             if !isPreview {
                 self.dismissWindow(id: WindowDestination.main.rawValue)

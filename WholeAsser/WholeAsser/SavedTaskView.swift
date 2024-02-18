@@ -27,6 +27,7 @@ struct SavedTaskView: View {
             Text("Saved Items")
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .padding()
             
             ScrollView {
                 LazyVGrid(columns: savedItemGrid,

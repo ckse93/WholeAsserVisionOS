@@ -135,6 +135,7 @@
 		AFB34D8A2B7A880C00CD3FD2 /* WholeAsser */ = {
 			isa = PBXGroup;
 			children = (
+				AFED26272B81B30E005C6751 /* Helpers and Extensions */,
 				AF3743C62B804DAE0013C184 /* Model */,
 				AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */,
 				AFB34D912B7A880C00CD3FD2 /* MainTabView.swift */,
@@ -144,15 +145,10 @@
 				AFB34D9A2B7A880D00CD3FD2 /* Info.plist */,
 				AFB34D972B7A880D00CD3FD2 /* Preview Content */,
 				AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */,
-				AF919C822B7AC0EA0025F777 /* TaskGenView.swift */,
 				AF919C952B7B1C7A0025F777 /* HomeView.swift */,
-				AFB592DF2B806EEA0010E90B /* ButtonStyles.swift */,
+				AF919C822B7AC0EA0025F777 /* TaskGenView.swift */,
 				AF919C932B7B14100025F777 /* TaskGenViewModel.swift */,
-				AF919C8F2B7B0F800025F777 /* Spacing.swift */,
 				AF919C8D2B7ADAA40025F777 /* ColortestView.swift */,
-				AF919C892B7ACFE60025F777 /* Buttons.swift */,
-				AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */,
-				AF919C842B7ACCDE0025F777 /* String + Extensions.swift */,
 				AF919C972B7D54610025F777 /* EmojiRatingView.swift */,
 				AF3743D02B804F3A0013C184 /* SavedTaskView.swift */,
 			);
@@ -181,6 +177,18 @@
 				AFB34DA32B7A880D00CD3FD2 /* WholeAsserTests.swift */,
 			);
 			path = WholeAsserTests;
+			sourceTree = "<group>";
+		};
+		AFED26272B81B30E005C6751 /* Helpers and Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF919C8B2B7AD0370025F777 /* Color + Extensions.swift */,
+				AF919C842B7ACCDE0025F777 /* String + Extensions.swift */,
+				AF919C8F2B7B0F800025F777 /* Spacing.swift */,
+				AFB592DF2B806EEA0010E90B /* ButtonStyles.swift */,
+				AF919C892B7ACFE60025F777 /* Buttons.swift */,
+			);
+			path = "Helpers and Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

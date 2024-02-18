@@ -97,6 +97,7 @@ struct HomeView: View {
                 Text("Quick Items")
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .padding()
                 
                 ScrollView {
                     LazyVGrid(columns: quickItemGrid,
