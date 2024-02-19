@@ -5,6 +5,7 @@
 //  Created by Chan Jung on 2/12/24.
 //
 
+import CloudKit
 import SwiftUI
 import SwiftData
 
@@ -73,7 +74,7 @@ struct HomeView: View {
     private var quickItemGrid: [GridItem] = [
         GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
         GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
-        GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
+//        GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
     ]
     
     
@@ -100,23 +101,45 @@ struct HomeView: View {
                     .padding()
                 
                 ScrollView {
-                    LazyVGrid(columns: quickItemGrid,
-                              alignment: .center,
-                              spacing: nil,
-                              pinnedViews: [],
-                              content: {
-                            ForEach(sampleItems) { sampleData in
-                                TaskCardView(taskData: sampleData)
-                                    .simultaneousGesture(LongPressGesture(minimumDuration: 1.0).onEnded { _ in
-                                        self.previewTask = sampleData
-                                    })
-                                    .simultaneousGesture(TapGesture().onEnded {
-                                        self.openWindow(id: WindowDestination.taskView.rawValue,
-                                                        value: sampleData)
-                                    })
-                            }
-                        
-                    })
+//                    LazyVGrid(columns: quickItemGrid,
+//                              alignment: .center,
+//                              spacing: nil,
+//                              pinnedViews: [],
+//                              content: {
+//                            ForEach(sampleItems) { sampleData in
+//                                Button {
+//                                    
+//                                } label: {
+//                                    TaskCardViewV2(taskData: sampleData)
+//                                }
+//                                .buttonStyle(CardButtonStyle())
+//                                .clipShape(
+//                                    RoundedRectangle(cornerRadius: 25.0)
+//                                )
+//                                    .simultaneousGesture(LongPressGesture(minimumDuration: 1.0).onEnded { _ in
+//                                        self.previewTask = sampleData
+//                                    })
+//                                    .simultaneousGesture(TapGesture().onEnded {
+//                                        self.openWindow(id: WindowDestination.taskView.rawValue,
+//                                                        value: sampleData)
+//                                    })
+//                            }
+//                        
+//                    })
+                    
+                    ForEach(sampleItems) { sampleData in
+                        Button {
+                            self.openWindow(id: WindowDestination.taskView.rawValue,
+                                            value: sampleData)
+                        } label: {
+                            TaskCardViewV2(taskData: sampleData)
+                        }
+                        .buttonStyle(CardButtonStyle2())
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 25.0)
+                        )
+                    }
+                    
                 }
             }
             

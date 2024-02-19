@@ -14,6 +14,12 @@ enum TimerStatus {
     case done
 }
 
+enum FetchStatus {
+    case loading
+    case success(TaskData)
+    case failed
+}
+
 @Observable
 final class TaskViewModel {
     init(taskData: TaskData) {

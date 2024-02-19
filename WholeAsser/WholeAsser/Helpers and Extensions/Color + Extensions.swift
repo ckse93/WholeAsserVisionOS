@@ -9,6 +9,23 @@ import Foundation
 import SwiftUI
 import UIKit
 
+
+/// main: background
+/// popDark/Pale: Highly legible
+/// accentDark/Pale: accent color
+struct ColorPackage {
+    let main: Color
+    let popDark: Color
+    let popPale: Color
+    let accentDark: Color
+    let accentPale: Color
+}
+
+struct ColorSet {
+    let base: ColorPackage
+    let complimentary: ColorPackage
+}
+
 //  https://stackoverflow.com/questions/56466128/what-are-the-primary-and-secondary-colors-in-swiftui
 extension Color {
     

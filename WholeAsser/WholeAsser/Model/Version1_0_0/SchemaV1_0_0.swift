@@ -5,6 +5,7 @@
 //  Created by Chan Jung on 2/14/24.
 //
 
+import CloudKit
 import Foundation
 import SwiftData
 

@@ -6,12 +6,72 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum TaskType: String, Codable, CaseIterable {
     case work = "work"
     case cleaning = "cleaning"
     case chores = "chores"
     case misc = "misc"
+    
+    var colorPackage: ColorSet {
+        switch self {
+        case .work:
+            let base = ColorPackage(main: .init(hex: "00B6D8"),
+                                    popDark: .init(hex: "006477"),
+                                    popPale: .init(hex: "1BD8FB"),
+                                    accentDark: .init(hex: "008098"),
+                                    accentPale: .init(hex: "03D7FF"))
+            let complimentary = ColorPackage(main: .init(hex: "FF7C00"),
+                                             popDark: .init(hex: "9B4C00"),
+                                             popPale: .init(hex: "FF8816"),
+                                             accentDark: .init(hex: "C25F00"),
+                                             accentPale: .init(hex: "FF8816"))
+            return ColorSet(base: base,
+                            complimentary: complimentary)
+        case .cleaning:
+            let base = ColorPackage(main: .init(hex: "A7C957"),
+                                    popDark: .init(hex: "628314"),
+                                    popPale: .init(hex: "E3F6B8"),
+                                    accentDark: .init(hex: "86AA31"),
+                                    accentPale: .init(hex: "D0EE8C"))
+            let complimentary = ColorPackage(main: .init(hex: "A74884"),
+                                             popDark: .init(hex: "6D104A"),
+                                             popPale: .init(hex: "DDA6C9"),
+                                             accentDark: .init(hex: "8D2968"),
+                                             accentPale: .init(hex: "C574A7"))
+            return ColorSet(base: base,
+                            complimentary: complimentary)
+        case .chores:
+            let base = ColorPackage(main: .init(hex: "ffbe0b"),
+                                    popDark: .init(hex: "A07500"),
+                                    popPale: .init(hex: "FFD768"),
+                                    accentDark: .init(hex: "CB9500"),
+                                    accentPale: .init(hex: "FFCC3F"))
+            let complimentary = ColorPackage(main: .init(hex: "1F2AB1"),
+                                             popDark: .init(hex: "0C136F"),
+                                             popPale: .init(hex: "6269C8"),
+                                             accentDark: .init(hex: "131C8D"),
+                                             accentPale: .init(hex: "4049B8"))
+            return ColorSet(base: base,
+                            complimentary: complimentary)
+
+        case .misc:
+            let base = ColorPackage(main: .init(hex: "5F0CB8"),
+                                    popDark: .init(hex: "38056E"),
+                                    popPale: .init(hex: "8A50C8"),
+                                    accentDark: .init(hex: "48088D"),
+                                    accentPale: .init(hex: "732DBF"))
+            let complimentary = ColorPackage(main: .init(hex: "FFDD00"),
+                                             popDark: .init(hex: "9B8600"),
+                                             popPale: .init(hex: "FFE959"),
+                                             accentDark: .init(hex: "FFE32B"),
+                                             accentPale: .init(hex: "D0B400"))
+            return ColorSet(base: base,
+                            complimentary: complimentary)
+
+        }
+    }
     
     var completionMessageArray: [String] {
         switch self {

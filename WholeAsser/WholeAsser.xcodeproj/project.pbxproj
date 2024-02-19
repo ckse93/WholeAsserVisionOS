@@ -12,6 +12,8 @@
 		AF3743CD2B804E090013C184 /* MigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3743CC2B804E090013C184 /* MigrationPlan.swift */; };
 		AF3743CF2B804E550013C184 /* TaskData + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3743CE2B804E550013C184 /* TaskData + Extensions.swift */; };
 		AF3743D12B804F3A0013C184 /* SavedTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3743D02B804F3A0013C184 /* SavedTaskView.swift */; };
+		AF395D002B82666600463B20 /* TaskCardViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF395CFF2B82666600463B20 /* TaskCardViewV2.swift */; };
+		AF395D022B826BAF00463B20 /* asdasd.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF395D012B826BAF00463B20 /* asdasd.swift */; };
 		AF919C832B7AC0EA0025F777 /* TaskGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C822B7AC0EA0025F777 /* TaskGenView.swift */; };
 		AF919C852B7ACCDE0025F777 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF919C842B7ACCDE0025F777 /* String + Extensions.swift */; };
 		AF919C882B7ACFDD0025F777 /* SFSymbolEnum in Frameworks */ = {isa = PBXBuildFile; productRef = AF919C872B7ACFDD0025F777 /* SFSymbolEnum */; };
@@ -50,6 +52,9 @@
 		AF3743CC2B804E090013C184 /* MigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationPlan.swift; sourceTree = "<group>"; };
 		AF3743CE2B804E550013C184 /* TaskData + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskData + Extensions.swift"; sourceTree = "<group>"; };
 		AF3743D02B804F3A0013C184 /* SavedTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTaskView.swift; sourceTree = "<group>"; };
+		AF395CFE2B8260DA00463B20 /* WholeAsser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WholeAsser.entitlements; sourceTree = "<group>"; };
+		AF395CFF2B82666600463B20 /* TaskCardViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardViewV2.swift; sourceTree = "<group>"; };
+		AF395D012B826BAF00463B20 /* asdasd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asdasd.swift; sourceTree = "<group>"; };
 		AF919C822B7AC0EA0025F777 /* TaskGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGenView.swift; sourceTree = "<group>"; };
 		AF919C842B7ACCDE0025F777 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
 		AF919C892B7ACFE60025F777 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
@@ -135,6 +140,7 @@
 		AFB34D8A2B7A880C00CD3FD2 /* WholeAsser */ = {
 			isa = PBXGroup;
 			children = (
+				AF395CFE2B8260DA00463B20 /* WholeAsser.entitlements */,
 				AFED26272B81B30E005C6751 /* Helpers and Extensions */,
 				AF3743C62B804DAE0013C184 /* Model */,
 				AFB34D8F2B7A880C00CD3FD2 /* WholeAsserApp.swift */,
@@ -146,6 +152,8 @@
 				AFB34D972B7A880D00CD3FD2 /* Preview Content */,
 				AFB34DB12B7AA23200CD3FD2 /* MiniGoalSignView.swift */,
 				AF919C952B7B1C7A0025F777 /* HomeView.swift */,
+				AF395D012B826BAF00463B20 /* asdasd.swift */,
+				AF395CFF2B82666600463B20 /* TaskCardViewV2.swift */,
 				AF919C822B7AC0EA0025F777 /* TaskGenView.swift */,
 				AF919C932B7B14100025F777 /* TaskGenViewModel.swift */,
 				AF919C8D2B7ADAA40025F777 /* ColortestView.swift */,
@@ -300,8 +308,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFB34D922B7A880C00CD3FD2 /* MainTabView.swift in Sources */,
+				AF395D022B826BAF00463B20 /* asdasd.swift in Sources */,
 				AF3743D12B804F3A0013C184 /* SavedTaskView.swift in Sources */,
 				AF919C962B7B1C7A0025F777 /* HomeView.swift in Sources */,
+				AF395D002B82666600463B20 /* TaskCardViewV2.swift in Sources */,
 				AF919C942B7B14100025F777 /* TaskGenViewModel.swift in Sources */,
 				AF3743C92B804DD10013C184 /* SchemaV1_0_0.swift in Sources */,
 				AF919C902B7B0F800025F777 /* Spacing.swift in Sources */,
@@ -465,6 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WholeAsser/WholeAsser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WholeAsser/Preview Content\"";
@@ -493,6 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WholeAsser/WholeAsser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WholeAsser/Preview Content\"";

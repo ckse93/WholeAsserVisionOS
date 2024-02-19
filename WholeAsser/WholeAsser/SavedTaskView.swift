@@ -5,6 +5,7 @@
 //  Created by Chan Jung on 2/16/24.
 //
 
+import CloudKit
 import Foundation
 import SwiftData
 import SwiftUI
@@ -30,27 +31,38 @@ struct SavedTaskView: View {
                 .padding()
             
             ScrollView {
-                LazyVGrid(columns: savedItemGrid,
-                          alignment: .center,
-                          spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/,
-                          pinnedViews: /*@START_MENU_TOKEN@*/[]/*@END_MENU_TOKEN@*/,
-                          content: {
-                    ForEach(savedTaskData) { savedTaskData in
-                        Button(action: {
-                            
-                        }, label: {
-                            TaskCardView(taskData: savedTaskData)
-                        })
-                        .buttonStyle(.plain)
-//                        .simultaneousGesture(LongPressGesture(minimumDuration: 1.0).onEnded { _ in
-//                            self.previewTask = savedTaskData
+                
+                ForEach(savedTaskData) { savedTaskData in
+                    Button(action: {
+                    }, label: {
+                        TaskCardViewV2(taskData: savedTaskData)
+                    })
+                    .buttonStyle(CardButtonStyle2())
+                    .clipShape(
+                        RoundedRectangle(cornerRadius: 25.0)
+                    )
+                }
+//                LazyVGrid(columns: savedItemGrid,
+//                          alignment: .center,
+//                          spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/,
+//                          pinnedViews: /*@START_MENU_TOKEN@*/[]/*@END_MENU_TOKEN@*/,
+//                          content: {
+//                    ForEach(savedTaskData) { savedTaskData in
+//                        Button(action: {
+//                            
+//                        }, label: {
+//                            TaskCardView(taskData: savedTaskData)
 //                        })
-                        .simultaneousGesture(TapGesture().onEnded {
-                            self.openWindow(id: WindowDestination.taskView.rawValue,
-                                            value: savedTaskData)
-                        })
-                    }
-                })
+//                        .buttonStyle(.plain)
+////                        .simultaneousGesture(LongPressGesture(minimumDuration: 1.0).onEnded { _ in
+////                            self.previewTask = savedTaskData
+////                        })
+//                        .simultaneousGesture(TapGesture().onEnded {
+//                            self.openWindow(id: WindowDestination.taskView.rawValue,
+//                                            value: savedTaskData)
+//                        })
+//                    }
+//                })
                 
                 Button {
                     do {
