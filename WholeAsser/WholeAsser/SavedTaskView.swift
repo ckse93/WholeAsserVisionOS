@@ -9,6 +9,7 @@ import CloudKit
 import Foundation
 import SwiftData
 import SwiftUI
+import SFSymbolEnum
 
 struct SavedTaskView: View {
     @Query var savedTaskData: [TaskData]
@@ -22,6 +23,7 @@ struct SavedTaskView: View {
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
+    @Environment(TaskDataTransporter.self) var transporter
     
     var body: some View {
         VStack {
@@ -34,6 +36,8 @@ struct SavedTaskView: View {
                 
                 ForEach(savedTaskData) { savedTaskData in
                     Button(action: {
+                        self.transporter.taskData = savedTaskData
+                        self.openWindow(id: WindowDestination.taskView.rawValue)
                     }, label: {
                         TaskCardViewV2(taskData: savedTaskData)
                     })
@@ -71,8 +75,9 @@ struct SavedTaskView: View {
                         
                     }
                 } label: {
-                    Text("PURGE")
+                    Label("Delete All", systemImage: .trash)
                 }
+                .buttonStyle(CancelButtonStyle())
 
             }
         }

@@ -11,6 +11,11 @@ import SwiftData
 
 typealias TaskData = SchemaV1_0_0.TaskData
 
+@Observable
+final class TaskDataTransporter {
+    var taskData: TaskData?
+}
+
 @main
 struct WholeAsserApp: App {
     init() {
@@ -30,6 +35,7 @@ struct WholeAsserApp: App {
     }
     
     let sharedModelContainer: ModelContainer
+    @State var transporter: TaskDataTransporter = .init()
     
     var body: some Scene {
         WindowGroup(id: WindowDestination.main.rawValue) {
@@ -37,19 +43,22 @@ struct WholeAsserApp: App {
                 .frame(
                     minWidth: 800, maxWidth: 2000,
                     minHeight: 600, maxHeight: 1400)
+                .environment(transporter)
         }
         .modelContainer(sharedModelContainer)
         
-        WindowGroup(id: WindowDestination.taskView.rawValue, for: TaskData.self, content: { taskDataBinding in
-            TaskView(vm: .init(taskData: taskDataBinding.wrappedValue!))
-        })
+        WindowGroup(id: WindowDestination.taskView.rawValue) {
+            TaskView()
+                .environment(transporter)
+        }
         .defaultSize(width: 400, height: 800)
         .windowResizability(.contentSize)
         .modelContainer(sharedModelContainer)
         
-        WindowGroup(id: WindowDestination.taskTryItOutView.rawValue, for: TaskData.self, content: { taskDataBinding in
-            TaskView(vm: .init(taskData: taskDataBinding.wrappedValue!), isTryItOut: true)
-        })
+        WindowGroup(id: WindowDestination.taskTryItOutView.rawValue) {
+            TaskView(isTryItOut: true)
+                .environment(transporter)
+        }
         .defaultSize(width: 400, height: 800)
         .windowResizability(.contentSize)
         .modelContainer(sharedModelContainer)

@@ -9,24 +9,25 @@ import Combine
 import CloudKit
 import SwiftUI
 import SwiftData
+import SFSymbolEnum
 
 let timerIntervalSecond: Double = 1.0
 
 struct TaskView: View {
-    init(vm: TaskViewModel) {
-        self._vm = State(initialValue: vm)
+    init() {
+//        self._vm = State(initialValue: vm)
         self.isPreview = false
         self.isTryItOut = false
     }
     
-    init(vm: TaskViewModel, isPreview: Bool = false) {
-        self._vm = State(initialValue: vm)
+    init(isPreview: Bool = false) {
+//        self._vm = State(initialValue: vm)
         self.isPreview = isPreview
         self.isTryItOut = false
     }
     
-    init(vm: TaskViewModel, isTryItOut: Bool = false) {
-        self._vm = State(initialValue: vm)
+    init(isTryItOut: Bool = false) {
+//        self._vm = State(initialValue: vm)
         self.isPreview = false
         self.isTryItOut = isTryItOut
     }
@@ -38,9 +39,9 @@ struct TaskView: View {
     @Environment(\.dismissWindow) var dismissWindow
     
     @Environment(\.modelContext) var modelContext
+    @Environment(TaskDataTransporter.self) var tranporter
     
-    @State var vm: TaskViewModel
-    @State var title: String = ""
+    @State var vm: TaskViewModel = .init()
     
     @State var timeSpent: Double = 0.1
     @State var timer = Timer.publish(every: timerIntervalSecond,
@@ -64,60 +65,70 @@ struct TaskView: View {
     
     var body: some View {
         VStack {
-            Text(title)
-                .font(.largeTitle)
-                .padding()
-            
-            Gauge(
-                value: timeSpent,
-                in: vm.minimum...vm.taskDurationInSec,
-                label: { Text("Label") },
-                currentValueLabel: {
-                    Text(vm.taskData.icon)
-                        .font(.system(size: 70))
-                        .padding()
-                }
-            )
-            .gaugeStyle(TaskViewGaugeStyle())
-            .padding()
-            
-            HStack {
-                if !isPreview {
-                    switch vm.timerStatus {
-                    case .notStarted:
-                        Button("Start") {
-                            self.startTimer()
-                        }
-                    case .running:
-                        EmptyView()
-                    case .done:
-                        Image(systemName: "checkmark")
-                            .foregroundStyle(
-                                Color.green
-                            )
+            switch vm.fetchStatus {
+            case .loading:
+                ProgressView()
+                    .controlSize(.extraLarge)
+            case .success(let taskData):
+                Text(taskData.title)
+                    .font(.largeTitle)
+                    .padding()
+                
+                Gauge(
+                    value: timeSpent,
+                    in: vm.minimum...taskData.taskDurationInSec,
+                    label: { Text("Label") },
+                    currentValueLabel: {
+                        Text(taskData.icon)
+                            .font(.system(size: 70))
+                            .padding()
                     }
-                }
-            }
-            .padding(.bottom)
-            
-            if !vm.taskData.miniGoals.isEmpty {
-                VStack(alignment: .leading) {
-                    Text("Mini goals")
-                        .padding(.vertical)
-                    
-                    ScrollView {
-                        ForEach(vm.taskData.miniGoals, id: \.self) { miniGoal in
-                            MiniGoalButtonView(miniGoal: miniGoal)
-                        }
-                    }
-                }
-                .padding()
-                .background(
-                    .regularMaterial, in: .rect(cornerRadius: 20)
                 )
+                .gaugeStyle(TaskViewGaugeStyle())
+                .padding()
+                
+                HStack {
+                    if !isPreview {
+                        switch vm.timerStatus {
+                        case .notStarted:
+                            Button("Start") {
+                                self.startTimer()
+                            }
+                        case .running:
+                            EmptyView()
+                        case .done:
+                            Image(systemName: "checkmark")
+                                .foregroundStyle(
+                                    Color.green
+                                )
+                        }
+                    }
+                }
+                .padding(.bottom)
+                
+                if !taskData.miniGoals.isEmpty {
+                    VStack(alignment: .leading) {
+                        Text("Mini goals")
+                            .padding(.vertical)
+                        
+                        ScrollView {
+                            ForEach(taskData.miniGoals, id: \.self) { miniGoal in
+                                MiniGoalButtonView(miniGoal: miniGoal)
+                            }
+                        }
+                    }
+                    .padding()
+                    .background(
+                        .regularMaterial, in: .rect(cornerRadius: 20)
+                    )
+                }
+                
+                Spacer()
+            case .failed:
+                Text("⚠️")
+                    .font(.system(size: 40))
+                Text("There was an error, please try again later")
             }
-            
-            Spacer()
         }
         .ornament(attachmentAnchor: .scene(.bottom), ornament: {
             HStack(spacing: Spacing.x4) {
@@ -127,37 +138,37 @@ struct TaskView: View {
                         Button(action: {
                             vm.showWarningAlert = true
                         }, label: {
-                            Text("Cancel")
+                            Label("Cancel", systemImage: .multiply)
                         })
                         .buttonStyle(CancelButtonStyle())
                     case .running:
                         Button(action: {
                             vm.showWarningAlert = true
                         }, label: {
-                            Text("Cancel")
+                            Label("Cancel", systemImage: .multiply)
                         })
                         .buttonStyle(CancelButtonStyle())
                         
                         Button(action: {
                             self.doneButtonAction()
                         }, label: {
-                            Text("Done")
+                            Label("Done", systemImage: .checkmark)
                         })
                         .buttonStyle(SaveButtonStyle())
                     case .done:
                         Button(action: {
                             self.exitAction()
                         }, label: {
-                            Text("Exit")
+                            Label("Exit", systemImage: .multiply)
                         })
                         
-                        if isTryItOut {
+                        if isTryItOut && vm.taskData != nil {
                             Button(action: {
-                                let taskData = vm.taskData
+                                let taskData = vm.taskData!
                                 modelContext.insert(taskData)
                                 self.exitAction()
                             }, label: {
-                                Text("Save task and Exit")
+                                Label("Save task and exit", systemImage: .checkmark)
                             })
                         }
                     }
@@ -166,13 +177,28 @@ struct TaskView: View {
             .padding()
             .glassBackgroundEffect()
         })
+        .onAppear {
+            vm.reset()
+            self.timer.upstream.connect().cancel()
+            if !isPreview {
+                self.dismissWindow(id: WindowDestination.main.rawValue)
+            }
+            if let data = tranporter.taskData {
+                vm.taskData = data
+                vm.fetchStatus = .success(data)
+            } else {
+                vm.fetchStatus = .failed
+            }
+        }
         .onReceive(timer, perform: { _ in
             // this will call every "timerIntervalSecond" second has elapsed
             timeSpent += timerIntervalSecond
         })
         .onChange(of: timeSpent, { _, newValue in
-            if newValue >= vm.taskDurationInSec {
-                self.stopTimer()
+            if let taskData = vm.taskData {
+                if newValue >= taskData.taskDurationInSec {
+                    self.stopTimer()
+                }
             }
         })
         .padding()
@@ -207,17 +233,11 @@ struct TaskView: View {
                 }
             }
         })
-        .onAppear(perform: {
-            self.timer.upstream.connect().cancel()
-            self.title = vm.taskData.title
-            if !isPreview {
-                self.dismissWindow(id: WindowDestination.main.rawValue)
-            }
-        })
         .onChange(of: vm.timerStatus, { _, newValue in
             switch newValue {
             case .done:
-                self.title = vm.taskData.taskType.completionMessageArray.randomElement()!
+                break
+//                self.title = vm.taskData.taskType.completionMessageArray.randomElement()!
             default:
                 break
             }
@@ -228,8 +248,12 @@ struct TaskView: View {
     }
     
     func exitAction() {
-        vm.updatePostRating()
-        print(vm.taskData.description)
+        if let taskData = vm.taskData,
+           let rating = vm.selectedRating
+        {
+            taskData.postTaskRatings.append(rating)
+            print(vm.taskData?.description as Any)
+        }
         self.openWindow(id: WindowDestination.main.rawValue)
     }
 }
@@ -267,11 +291,6 @@ struct MiniGoalButtonView: View {
         }
     }
 }
-
-#Preview {
-    TaskView(vm: .init(taskData: presetData1))
-}
-
 struct TaskViewGaugeStyle: GaugeStyle {
     private var gradient: Gradient = Gradient(colors: [.yellow, .green])
     

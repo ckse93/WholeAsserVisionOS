@@ -150,6 +150,13 @@ extension TaskData {
     }
 }
 
+extension TaskData {
+    var taskDurationInSec: Double {
+        let totalMins = (durationHr * 60) + totalMinutes
+        return Double(totalMins * 60)
+    }
+}
+
 extension TaskData: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)

@@ -13,6 +13,7 @@ struct TaskGenView: View {
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
+    @Environment(TaskDataTransporter.self) var transporter
     
     let cancelAction: (() -> Void)
     
@@ -226,8 +227,9 @@ struct TaskGenView: View {
                         vm.errorString = "Cannot add empty title"
                         vm.showErrorAlert = true
                     } else {
-                        self.openWindow(id: WindowDestination.taskTryItOutView.rawValue,
-                                        value: vm.makeTaskData())
+                        let taskData = vm.makeTaskData()
+                        self.transporter.taskData = taskData
+                        self.openWindow(id: WindowDestination.taskTryItOutView.rawValue)
                     }
                 } label: {
                     Text("Try it out")

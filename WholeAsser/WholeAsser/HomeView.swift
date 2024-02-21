@@ -70,14 +70,6 @@ let presetData6: TaskData = .init(title: "Relax for a bit",
                                   taskType: .misc)
 
 struct HomeView: View {
-    
-    private var quickItemGrid: [GridItem] = [
-        GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
-        GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
-//        GridItem(.flexible(minimum: 100), spacing: Spacing.x4, alignment: .top),
-    ]
-    
-    
     let sampleItems = [presetData1, 
                        presetData2,
                        presetData3,
@@ -91,6 +83,7 @@ struct HomeView: View {
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
+    @Environment(TaskDataTransporter.self) var transporter
     
     var body: some View {
         HStack {
@@ -101,36 +94,10 @@ struct HomeView: View {
                     .padding()
                 
                 ScrollView {
-//                    LazyVGrid(columns: quickItemGrid,
-//                              alignment: .center,
-//                              spacing: nil,
-//                              pinnedViews: [],
-//                              content: {
-//                            ForEach(sampleItems) { sampleData in
-//                                Button {
-//                                    
-//                                } label: {
-//                                    TaskCardViewV2(taskData: sampleData)
-//                                }
-//                                .buttonStyle(CardButtonStyle())
-//                                .clipShape(
-//                                    RoundedRectangle(cornerRadius: 25.0)
-//                                )
-//                                    .simultaneousGesture(LongPressGesture(minimumDuration: 1.0).onEnded { _ in
-//                                        self.previewTask = sampleData
-//                                    })
-//                                    .simultaneousGesture(TapGesture().onEnded {
-//                                        self.openWindow(id: WindowDestination.taskView.rawValue,
-//                                                        value: sampleData)
-//                                    })
-//                            }
-//                        
-//                    })
-                    
                     ForEach(sampleItems) { sampleData in
                         Button {
-                            self.openWindow(id: WindowDestination.taskView.rawValue,
-                                            value: sampleData)
+                            self.transporter.taskData = sampleData
+                            self.openWindow(id: WindowDestination.taskView.rawValue)
                         } label: {
                             TaskCardViewV2(taskData: sampleData)
                         }

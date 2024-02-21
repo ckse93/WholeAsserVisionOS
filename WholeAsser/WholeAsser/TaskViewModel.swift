@@ -22,27 +22,31 @@ enum FetchStatus {
 
 @Observable
 final class TaskViewModel {
-    init(taskData: TaskData) {
-        self.taskData = taskData
+    init() {
+        self.fetchStatus = .loading
         self.timerStatus = .notStarted
     }
     var timerStatus: TimerStatus
-    var taskData: TaskData
+    var fetchStatus: FetchStatus
+    var taskData: TaskData?
 
     var showRatingView: Bool = false
     var showWarningAlert: Bool = false
-    
-    var taskDurationInSec: Double {
-        Double(taskData.totalMinutes * 60)
-    }
     
     let minimum = 0.0
     
     var selectedRating: String?
     
-    func updatePostRating() {
-        if let rating = self.selectedRating {
-            taskData.postTaskRatings.append(rating)
-        }
+    func reset() {
+        self.timerStatus = .notStarted
+        self.showRatingView = false
+        self.showWarningAlert = false
     }
+    
+//    func updatePostRating() {
+//        if let taskData = self.taskData,
+//           let rating = self.selectedRating {
+//            taskData.postTaskRatings.append(rating)
+//        }
+//    }
 }

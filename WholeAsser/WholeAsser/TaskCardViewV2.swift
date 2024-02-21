@@ -25,11 +25,12 @@ struct TaskCardViewV2: View {
             .clipShape(
                 RoundedRectangle(cornerRadius: 12)
             )
-            .padding(.trailing)
+            .padding()
             
             VStack(alignment: .leading, content: {
                 HStack(alignment: .top, content: {
                     Text(taskData.title)
+                        .font(.title)
                         .fontWeight(.bold)
                         .padding(.trailing)
                     
@@ -57,6 +58,15 @@ struct TaskCardViewV2: View {
                     .foregroundStyle(
                         .tertiary
                     )
+                
+                if !taskData.miniGoals.isEmpty {
+                    Text("\(taskData.miniGoals.count) mini goal(s)")
+                        .font(.caption)
+                        .padding(.top, Spacing.x1)
+                        .foregroundStyle(
+                            .tertiary
+                        )
+                }
             })
         })
         .padding(4)

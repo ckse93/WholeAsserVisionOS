@@ -40,6 +40,7 @@ enum TabItem: CaseIterable, Identifiable {
 
 struct MainTabView: View {
     @State private var selectedTab: TabItem = .main
+    @Environment(TaskDataTransporter.self) var transporter
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
@@ -53,15 +54,17 @@ struct MainTabView: View {
                 switch tabItem {
                 case .main:
                     HomeView()
-                    .tabItem {
-                        Label(tabItem.name, systemImage: tabItem.image.rawValue)
-                    }
-                    .tag(TabItem.main)
+                        .environment(transporter)
+                        .tabItem {
+                            Label(tabItem.name, systemImage: tabItem.image.rawValue)
+                        }
+                        .tag(TabItem.main)
                     
                 case .taskGen:
                     TaskGenView(cancelAction: {
                         selectedTab = .main
                     })
+                        .environment(transporter)
                         .tabItem {
                             Label(tabItem.name, systemImage: tabItem.image.rawValue)
                         }
