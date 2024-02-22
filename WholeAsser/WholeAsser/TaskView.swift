@@ -15,19 +15,16 @@ let timerIntervalSecond: Double = 1.0
 
 struct TaskView: View {
     init() {
-//        self._vm = State(initialValue: vm)
         self.isPreview = false
         self.isTryItOut = false
     }
     
     init(isPreview: Bool = false) {
-//        self._vm = State(initialValue: vm)
         self.isPreview = isPreview
         self.isTryItOut = false
     }
     
     init(isTryItOut: Bool = false) {
-//        self._vm = State(initialValue: vm)
         self.isPreview = false
         self.isTryItOut = isTryItOut
     }
@@ -71,21 +68,44 @@ struct TaskView: View {
                     .controlSize(.extraLarge)
             case .success(let taskData):
                 Text(taskData.title)
+                    .lineLimit(3)
                     .font(.largeTitle)
+                    .fontWeight(.bold)
                     .padding()
                 
-                Gauge(
-                    value: timeSpent,
-                    in: vm.minimum...taskData.taskDurationInSec,
-                    label: { Text("Label") },
-                    currentValueLabel: {
-                        Text(taskData.icon)
-                            .font(.system(size: 70))
-                            .padding()
+                ZStack(alignment: .topTrailing) {
+                    Gauge(
+                        value: timeSpent,
+                        in: vm.minimum...taskData.taskDurationInSec,
+                        label: { Text("Label") },
+                        currentValueLabel: {
+                            Text(taskData.icon)
+                                .font(.system(size: 70))
+                                .padding()
+                        }
+                    )
+                    .gaugeStyle(TaskViewGaugeStyle(gradient: .init(colors: [taskData.taskType.colorPackage.base.accentPale,
+                                                                            taskData.taskType.colorPackage.base.accentDark])))
+                    .padding()
+                    
+                    if let rating = vm.selectedRating {
+                        Text(rating)
+                            .font(.system(size: 40))
+                            .animation(.spring(duration: 1, bounce: 0.9), value: vm.selectedRating)
+                    } else {
+                        Text(taskData.taskType.rawValue)
+                            .fontWeight(.bold)
+                            .foregroundStyle(
+                                taskData.taskType.colorPackage.complimentary.popDark
+                            )
+                            .padding(.horizontal)
+                            .padding(2)
+                            .background(
+                                taskData.taskType.colorPackage.complimentary.popPale
+                            )
+                            .clipShape(Capsule())
                     }
-                )
-                .gaugeStyle(TaskViewGaugeStyle())
-                .padding()
+                }
                 
                 HStack {
                     if !isPreview {
@@ -95,12 +115,9 @@ struct TaskView: View {
                                 self.startTimer()
                             }
                         case .running:
-                            EmptyView()
+                            Text(" ")
                         case .done:
-                            Image(systemName: "checkmark")
-                                .foregroundStyle(
-                                    Color.green
-                                )
+                            Text("🎉 Done! good job!")
                         }
                     }
                 }
@@ -108,12 +125,14 @@ struct TaskView: View {
                 
                 if !taskData.miniGoals.isEmpty {
                     VStack(alignment: .leading) {
-                        Text("Mini goals")
-                            .padding(.vertical)
-                        
-                        ScrollView {
-                            ForEach(taskData.miniGoals, id: \.self) { miniGoal in
-                                MiniGoalButtonView(miniGoal: miniGoal)
+                        List {
+                            Section {
+                                ForEach(taskData.miniGoals, id: \.self) { miniGoal in
+                                    MiniGoalButtonView(miniGoal: miniGoal)
+                                }
+                            } header: {
+                                Text("Mini goals")
+                                    .padding(.vertical)
                             }
                         }
                     }
@@ -292,7 +311,7 @@ struct MiniGoalButtonView: View {
     }
 }
 struct TaskViewGaugeStyle: GaugeStyle {
-    private var gradient: Gradient = Gradient(colors: [.yellow, .green])
+    let gradient: Gradient
     
     func makeBody(configuration: Configuration) -> some View {
         ZStack {

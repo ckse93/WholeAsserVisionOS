@@ -86,34 +86,39 @@ struct HomeView: View {
     @Environment(TaskDataTransporter.self) var transporter
     
     var body: some View {
-        HStack {
-            VStack {
-                Text("Quick Items")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
-                
-                ScrollView {
-                    ForEach(sampleItems) { sampleData in
-                        Button {
-                            self.transporter.taskData = sampleData
-                            self.openWindow(id: WindowDestination.taskView.rawValue)
-                        } label: {
-                            TaskCardViewV2(taskData: sampleData)
-                        }
-                        .buttonStyle(CardButtonStyle2())
-                        .clipShape(
-                            RoundedRectangle(cornerRadius: 25.0)
-                        )
-                    }
+        GeometryReader { geo in
+            HStack {
+                VStack {
+                    Text("Quick Items")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding()
                     
+                    ScrollView {
+                        ForEach(sampleItems) { sampleData in
+                            Button {
+                                self.transporter.taskData = sampleData
+                                self.openWindow(id: WindowDestination.taskView.rawValue)
+                            } label: {
+                                TaskCardViewV2(taskData: sampleData)
+                            }
+                            .buttonStyle(CardButtonStyle2())
+                            .clipShape(
+                                RoundedRectangle(cornerRadius: 25.0)
+                            )
+                        }
+                        
+                    }
                 }
+                .frame(width: geo.size.width / 2)
+                
+                Divider()
+                    .padding(.horizontal)
+                
+                SavedTaskView()
+                    .frame(width: geo.size.width / 2)
             }
             
-            Divider()
-                .padding(.horizontal)
-            
-            SavedTaskView()
         }
         .padding()
         .sheet(item: $previewTask, content: { previewTaskData in

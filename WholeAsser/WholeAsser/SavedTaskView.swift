@@ -33,7 +33,6 @@ struct SavedTaskView: View {
                 .padding()
             
             ScrollView {
-                
                 ForEach(savedTaskData) { savedTaskData in
                     Button(action: {
                         self.transporter.taskData = savedTaskData
@@ -68,17 +67,18 @@ struct SavedTaskView: View {
 //                    }
 //                })
                 
-                Button {
-                    do {
-                        try modelContext.delete(model: TaskData.self)
-                    } catch {
-                        
+                if !savedTaskData.isEmpty {
+                    Button {
+                        do {
+                            try modelContext.delete(model: TaskData.self)
+                        } catch {
+                            
+                        }
+                    } label: {
+                        Label("Delete All", systemImage: .trash)
                     }
-                } label: {
-                    Label("Delete All", systemImage: .trash)
+                    .buttonStyle(CancelButtonStyle())
                 }
-                .buttonStyle(CancelButtonStyle())
-
             }
         }
     }

@@ -14,6 +14,13 @@ typealias TaskData = SchemaV1_0_0.TaskData
 @Observable
 final class TaskDataTransporter {
     var taskData: TaskData?
+    
+    func hasMiniGoal() -> Bool {
+        guard let miniGoals = taskData?.miniGoals else {
+            return false
+        }
+        return !miniGoals.isEmpty
+    }
 }
 
 @main
@@ -51,7 +58,7 @@ struct WholeAsserApp: App {
             TaskView()
                 .environment(transporter)
         }
-        .defaultSize(width: 400, height: 800)
+        .defaultSize(width: 500, height: transporter.hasMiniGoal() ? 700 : 400)
         .windowResizability(.contentSize)
         .modelContainer(sharedModelContainer)
         
@@ -59,7 +66,7 @@ struct WholeAsserApp: App {
             TaskView(isTryItOut: true)
                 .environment(transporter)
         }
-        .defaultSize(width: 400, height: 800)
+        .defaultSize(width: 500, height: transporter.hasMiniGoal() ? 700 : 400)
         .windowResizability(.contentSize)
         .modelContainer(sharedModelContainer)
     }
